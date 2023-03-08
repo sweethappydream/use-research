@@ -7,12 +7,11 @@
   pointer-events: none;
 }
 
-.bg-com {
-  background-image: url('./assets/img/bg-com.png');
-  position: absolute;
-  left: -30px;
-  max-width: none;
-  width: 1081px;
+.bg-bl {
+  background-image: url('./assets/img/bg-black.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto;  
 }
 
 @media (prefers-reduced-motion: no-preference) {

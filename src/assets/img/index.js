@@ -1,6 +1,7 @@
 import logo from "./logo.jpg";
 import bgBlack from "./bg-black.png"
-import bgYellow from "./bg-yel.png"
+import bgYellow1 from "./bg-yel1.png"
+import bgYellow2 from "./bg-yel2.png"
 import catBig from "./cat-bit.png"
 import catLetter from "./cat-letter.png"
 import group1 from "./group1.png"
@@ -10,5 +11,11 @@ import verticalCard from "./vertical-card.png"
 import woman from "./woman.png"
 import bgPic from "./bg-pic.png"
 import bgCom from "./bg-com.png"
+import ddd from "./ddd.png"
+import design from "./design.png"
+import zoom from "./zoom.png"
+import dollar from "./dollar.png"
+import cat from "./cat.png"
+import bgVerticalBlack from "./bg-vertical-black.png"
 
-export {logo, bgBlack, bgYellow, catBig, catLetter, group1, group2, group3, verticalCard, woman, bgCom, bgPic};
+export {logo, bgBlack, bgYellow1, bgVerticalBlack, bgYellow2, catBig, catLetter, group1, group2, group3, verticalCard, woman, bgCom, bgPic, ddd, design, zoom, dollar, cat};
