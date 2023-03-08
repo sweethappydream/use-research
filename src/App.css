@@ -7,6 +7,14 @@
   pointer-events: none;
 }
 
+.bg-com {
+  background-image: url('./assets/img/bg-com.png');
+  position: absolute;
+  left: -30px;
+  max-width: none;
+  width: 1081px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@layer base {
+  @font-face {
+    font-family: 'Avenir';
+    src: url('./assets/font/AvenirNextLTPro-Regular.otf');
+  }
+}
+
+@layer base {
+  @font-face {
+    font-family: 'Spoof';
+    src: url('./assets/font/SpoofTrial-Regular.otf');
+  }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
