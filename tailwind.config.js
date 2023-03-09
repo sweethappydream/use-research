@@ -16,7 +16,8 @@ module.exports = {
         'spoof': ['Spoof']
       },
       screens: {
-        '3xl': '2000px'
+        lg: "1170px",
+        '3xl': '1800px'
       }
     },
   },

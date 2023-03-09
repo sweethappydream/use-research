@@ -1,16 +1,20 @@
 import React from "react";
 import Outline from "../layout";
-import { bgVerticalBlack, bgYellow2, cat } from "../assets/img";
+import { bgVerticalBlack, bgYellow2, cat, catLetter2 } from "../assets/img";
+import { Faqs, GoSales } from "../components/home";
+import { useNavigate } from "react-router-dom";
 
 const Story = () => {
+    const navigate = useNavigate();
+
     return (
         <Outline>
-            <div className=" text-center text-4xl text-purple lg:text-6xl font-spoof px-32 pt-32">
-                How did our <span className=" text-orange"> Story </span>started!
+            <div className=" text-center text-4xl text-purple lg:text-6xl font-spoof px-32 pt-20">
+                How did our <span className=" text-orange"> Story </span><br/>started!
             </div>
-            <div className="relative top-[-100px] lg:top-0">
+            <div className="relative w-screen overflow-hidden">
                 <img
-                    className="absolute w-full h-[1400px] lg:h-[1000px] xl:h-auto"
+                    className="absolute right-0 w-[3000px] h-[1800px] lg:h-[1000px]  lg:top-0 xl:h-auto max-w-none"
                     src={bgVerticalBlack}
                     alt="bgverticalblack"
                 />
@@ -31,7 +35,15 @@ const Story = () => {
                     <div className="w-[30%]">
                         <img src={cat} alt="cat" width="350px 2xl:400px" />
                     </div>
-                    <img className="absolute" src={bgYellow2} alt="bgyellow"/>
+
+                </div>
+                <img className="absolute w-[3000px] h-[1500px] xl:h-[1200px] 2xl:h-auto max-w-none"  src={bgYellow2} alt="bgyellow" />
+                <div className=" px-6 relative pt-[200px] z-40 min-h-[400px]">
+                    <div className="justify-center text-5xl hidden xl:flex py-20">
+                        <span>How does</span>
+                        <img src={catLetter2} alt="catletter" className="px-3" />
+                        beta verion works?
+                    </div>
                     <div className="flex flex-col items-center justify-center gap-10 xl:flex-row">
                         <div className="bg-white rounded-md flex flex-col items-center justify-center w-[421px] h-[246px] p-3">
                             <div className="bg-dark-red rounded-[30px] font-spoof h-14 w-14 flex items-center justify-center">
@@ -72,8 +84,25 @@ const Story = () => {
                             </span>
                         </div>
                     </div>
+                    <div className="flex items-center justify-center gap-3 mt-[150px] py-10">
+                        <img src={cat} alt="cat" />
+                        <div className="px-2">
+                            <div className=" font-spoof text-[21px]">
+                                Do you need help?
+                            </div>
+                            <div className=" font-avenir text-[15px] w-[350px] py-4">
+                                We provide free consolation that will asses you with the best
+                                method to research
+                            </div>
+                            <div className="flex items-center justify-center rounded-[41px] border border-black bg-yellow text-lg h-[49px] w-[200px] cursor-pointer" onClick={() => navigate('/talktoexperts')}>
+                                Talk to an expert
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <Faqs/>
+            <GoSales/>
         </Outline>
     );
 };

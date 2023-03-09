@@ -1,23 +1,23 @@
 import React from "react";
-import logo from "../../assets/img/logo.jpg";
+import { logo } from "../../assets/img";
+import { facebook, linkedin, twitter } from "../../assets/img";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
   return (
-    <div className="flex justify-center md:justify-between items-center mt-32 mb-10 pt-24 px-16">
-      <img src={logo} alt="logo" />
+    <div className="flex justify-center md:justify-between items-center mt-20 mb-10 pt-24 px-16">
+      <img src={logo} alt="logo" onClick={() => navigate('/')}/>
       <div className="justify-center items-center font-medium text-base hidden lg:flex font-avenir">
-        <div className="px-4">Story</div>
-        <div className="px-4">Team</div>
-        <div className="px-4">Clients</div>
-        <div className="px-4">FAQs</div>
+        <div className="px-4 cursor-pointer" onClick={() => navigate('/story')}>Story</div>
+        <div className="px-4 cursor-pointer" onClick={() => navigate('/team')}>Team</div>
+        <div className="px-4 cursor-pointer" onClick={() => navigate('/#clients')}>Clients</div>
+        <div className="px-4 cursor-pointer" onClick={() => navigate('/#faqs')}>FAQs</div>
       </div>
       <div className="hidden justify-center items-center md:flex text-lg font-spoof">
-        <div className="mx-6 underline">
-          Get paid to test
-        </div>
-        <div className="flex items-center justify-center mx-6 rounded-[41px] bg-yellow h-[49px] w-[161px] ">
-          Get Started
-        </div>
+        <img className="mx-3" src={facebook} alt="facebook"/>
+        <img className="mx-3" src={twitter} alt="twitter"/>
+        <img className="mx-3" src={linkedin} alt="linkedin"/>
       </div>
     </div>
   );

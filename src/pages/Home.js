@@ -21,22 +21,25 @@ import {
 } from "../assets/img";
 import { BlackCard, Faqs, GoSales } from "../components/home";
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <Layout>
       <div className="flex flex-col items-center px-9 py-16 lg:px-36 lg:flex-row gap-10">
         <div className="p-7 lg:w-[50%]">
-          <div className=" text-4xl text-purple lg:text-6xl font-spoof">
+          <div className=" text-4xl text-purple lg:text-6xl 2xl:text-8xl font-spoof">
             The easiest way to win faster with{" "}
             <span className=" text-orange">proof</span>!
           </div>
-          <div className=" mt-6 lg:mt-8 font-avenir text-lg">
+          <div className=" mt-6 lg:mt-8 2xl:text-2xl font-avenir text-lg">
             UserResearch is a platform that help creators,Product managers,
             founders and researchers to test their product with their user
             criteria and get to see how they are interacting with it.
           </div>
-          <div className="flex items-center mt-6 lg:mt-8 font-spoof ">
+          <div className="flex items-center mt-6 lg:mt-8 font-spoof 2xl:text-2xl ">
             <div className="flex items-center justify-center rounded-[41px] bg-yellow h-[49px] w-[161px] ">
               Get Started
             </div>
@@ -51,7 +54,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="text-center pb-10">
+      <div id="clients" className="text-center pb-10">
         <div className=" font-spoof text-3xl p-7">
           Trusted by the leading companies of the future
         </div>
@@ -69,7 +72,7 @@ const Home = () => {
           alt="bgcom"
         />
         <img
-          className=" absolute right-[-100px] lg:right-0 top-[330px] lg:top-80 max-w-none h-[1300px] xl:w-[95%] lg:h-[1000px] z-30 xl:h-[1200px] 2xl:h-[1400px] 3xl:h-auto"
+          className=" absolute right-[-100px] lg:right-0 top-[330px] lg:top-80 max-w-none h-[1500px] xl:w-[95%] lg:h-[1000px] z-30 xl:h-[1200px] 2xl:h-[1400px] "
           src={bgYellow1}
           alt="bgyellow"
         />
@@ -218,23 +221,22 @@ const Home = () => {
               </span>
             </div>
           </div>
-          <div className="flex items-center justify-center gap-3 mt-[150px]">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-3 mt-[150px]">
             <img src={cat} alt="cat" />
-            <div className="px-2">
+            <div className="px-2 flex flex-col justify-center md:justify-start md:items-start items-center">
               <div className=" font-spoof text-[21px] text-white">
                 Do you need help?
               </div>
-              <div className=" font-avenir text-[15px] text-white w-[350px] py-4">
+              <div className=" font-avenir text-center text-[15px] text-white w-[350px] py-4">
                 We provide free consolation that will asses you with the best
                 method to research
               </div>
-              <div className="flex items-center justify-center rounded-[41px] bg-yellow text-lg h-[49px] w-[200px]">
+              <div className="flex items-center justify-center rounded-[41px] bg-yellow text-lg h-[49px] w-[200px] cursor-pointer" onClick={() => navigate('/talktoexperts')}>
                 Talk to an expert
               </div>
             </div>
           </div>
         </div>
-        <div className="relative z-40 "> hi</div>
       </div>
       <Faqs/>
       <GoSales/>

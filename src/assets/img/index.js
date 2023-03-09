@@ -1,9 +1,10 @@
-import logo from "./logo.jpg";
+import logo from "./logo.png";
 import bgBlack from "./bg-black.png"
 import bgYellow1 from "./bg-yel1.png"
 import bgYellow2 from "./bg-yel2.png"
 import catBig from "./cat-bit.png"
 import catLetter from "./cat-letter.png"
+import catLetter2 from "./cat-letter2.png"
 import group1 from "./group1.png"
 import group2 from "./group2.png"
 import group3 from "./group3.png"
@@ -17,5 +18,22 @@ import zoom from "./zoom.png"
 import dollar from "./dollar.png"
 import cat from "./cat.png"
 import bgVerticalBlack from "./bg-vertical-black.png"
+import linkedin from "./linkedin.png"
+import facebook from "./facebook.png"
+import twitter from "./twitter.png"
+import bgYellow3 from "./bg-yel3.png"
+import ahmed from "./ahmed.png"
+import mahmoud from "./mahmoud.png"
+import muhamed from "./muhamed.png"
+import right from "./right.png"
+import left from "./left.png"
+import location from "./location.png"
+import perspective from "./perspective.png"
+import paid from "./paid.png"
+import catYel from "./cat-yel.png"
+import topCard from "./top-card.png"
+import topCard2 from "./top-card2.png"
+import bottomCard from "./bottom-card.png"
+import success from './success.png'
 
-export {logo, bgBlack, bgYellow1, bgVerticalBlack, bgYellow2, catBig, catLetter, group1, group2, group3, verticalCard, woman, bgCom, bgPic, ddd, design, zoom, dollar, cat};
+export {success, topCard,topCard2, bottomCard, catYel, paid, location, perspective, ahmed, mahmoud, muhamed, left, right, linkedin, facebook, twitter, logo, bgBlack, bgYellow1, bgYellow3, bgVerticalBlack, bgYellow2, catBig, catLetter, catLetter2, group1, group2, group3, verticalCard, woman, bgCom, bgPic, ddd, design, zoom, dollar, cat};
