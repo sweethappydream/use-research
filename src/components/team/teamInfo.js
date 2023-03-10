@@ -20,7 +20,7 @@ const teamInfo = [
     {
         "image": muhamed,
         "name": "Muhamed Hekal",
-        "title": "CO-Founder|PMO",
+        "title": "CO-Founder | PMO",
         "facebook": "#", 
         "twitter": "#", 
         "linkedin": "#", 

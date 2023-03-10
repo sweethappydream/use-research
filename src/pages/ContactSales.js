@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ddd, design, dollar, logo, success, wholeCardDown, wholeCardUp, zoom } from "../assets/img";
 import { useNavigate } from "react-router-dom";
 
-const TalkToExperts = () => {
+const ContactSales = () => {
     const [submitted, setSubmitted] = useState(false);
     const navigate = useNavigate();
 
@@ -67,12 +67,12 @@ const TalkToExperts = () => {
             </div>
             <div className="md:w-[60%] bg-[#F5F5F5] flex flex-col items-center">
                 <div className="flex justify-center items-center mt-10">
-                    <img className=" cursor-pointer" src={logo} alt="logo" onClick={() => navigate('/')} />
+                    <img className=" cursor-pointer" src={logo} alt="logo" onClick={() => navigate('/')}/>
                 </div>
 
                 {!submitted ? <div className="p-4">
                     <div className=" text-center text-4xl text-purple xl:text-5xl  font-spoof pt-20 px-12">
-                        Talk to <span className=" text-orange"> Experts </span>!
+                        Contact our <span className=" text-orange"> Sales </span>!
                     </div>
                     <div className="mt-4 font-avenir text-center text-lg 2xl:text-2xl">
                         Fill out the form below and one of our experts will get in touch with you.
@@ -112,7 +112,7 @@ const TalkToExperts = () => {
                             <label for="extra">Wanna say something?</label>
                             <input id="extra" className="border border-[#E2E1E5] text-sm 2xl:text-lg p-3 rounded-3xl" placeholder="Write here..." />
                         </div>
-                        <button type="submit" className="w-full text-lg bg-yellow rounded-3xl p-3 mt-6 font-spoof">Talk to an expert</button>
+                        <button type="submit" className="w-full text-lg bg-yellow rounded-3xl p-3 mt-6 font-spoof">Contact our team</button>
                     </form>
                 </div>
                     :
@@ -130,4 +130,4 @@ const TalkToExperts = () => {
     )
 }
 
-export default TalkToExperts;
+export default ContactSales;

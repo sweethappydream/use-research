@@ -1,34 +1,46 @@
+import ContactSales from "./ContactSales";
 import Home from "./Home";
+import Plan from "./Plan";
 import Story from "./Story";
 import TalkToExperts from "./TalkToExperts";
 import Team from "./Team";
 import Tester from "./Tester";
+import Outline from "../layout";
 
 const pagesData = [
   {
     path: "",
-    element: <Home />,
-    title: "home"
-  },
-  {
-    path: "story",
-    element: <Story/>,
-    title: "story"
-  },
-  {
-    path: "team",
-    element: <Team/>,
-    title: "team"
-  },
-  {
-    path: "tester",
-    element: <Tester/>,
-    title: "tester"
+    element: <Outline />,
+    children: [
+      {
+        path: "/",
+        element: <Home/>
+      },
+      {
+        path: "story",
+        element: <Story />,
+      },
+      {
+        path: "team",
+        element: <Team />,
+      },
+      {
+        path: "tester",
+        element: <Tester />,
+      },
+      {
+        path: "plan",
+        element: <Plan />,
+      }
+    ]
   },
   {
     path: "talktoexperts",
-    element: <TalkToExperts/>,
-    title: "talktoexperts"
+    element: <TalkToExperts />,
+  },
+  {
+    path: "contactsales",
+    element: <ContactSales />,
   }
 ];
 

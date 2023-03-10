@@ -1,16 +1,15 @@
 import React from "react";
-import Outline from "../layout";
 import { bgYellow3, left, right } from "../assets/img";
 import { teamInfo, TeamCard } from "../components/team";
 import { GoSales } from "../components/home";
 
 const Team = () => {
     return (
-        <Outline>
+        <>
             <div className="relative">
                 <img className="absolute w-full 3xl:h-[1100px]" src={bgYellow3} alt="bgyellow" />
-                <div className="relative pb-32 3xl:mb-40">
-                    <div className=" text-center text-4xl 3xl:text-8xl text-purple lg:text-6xl font-spoof px-32 pt-20">
+                <div className="relative pb-[145px] 3xl:mb-40">
+                    <div className=" text-center text-4xl  text-purple lg:text-6xl font-spoof pt-20">
                         Our <span className=" text-orange"> team </span> is ready <br />to help you!
                     </div>
                     <div className="text-center text-lg font-avenir py-10 3xl:text-2xl">
@@ -26,7 +25,7 @@ const Team = () => {
                 </div>
                 <GoSales/>
             </div>
-        </Outline>
+        </>
     )
 }
 

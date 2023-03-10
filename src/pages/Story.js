@@ -1,5 +1,4 @@
 import React from "react";
-import Outline from "../layout";
 import { bgVerticalBlack, bgYellow2, cat, catLetter2 } from "../assets/img";
 import { Faqs, GoSales } from "../components/home";
 import { useNavigate } from "react-router-dom";
@@ -8,9 +7,9 @@ const Story = () => {
     const navigate = useNavigate();
 
     return (
-        <Outline>
+        <>
             <div className=" text-center text-4xl text-purple lg:text-6xl font-spoof px-32 pt-20">
-                How did our <span className=" text-orange"> Story </span><br/>started!
+                How did our <span className=" text-orange"> Story </span><br />started!
             </div>
             <div className="relative w-screen overflow-hidden">
                 <img
@@ -37,54 +36,55 @@ const Story = () => {
                     </div>
 
                 </div>
-                <img className="absolute w-[3000px] h-[1500px] xl:h-[1200px] 2xl:h-auto max-w-none"  src={bgYellow2} alt="bgyellow" />
+                <img className="absolute w-[3000px] h-[1500px] xl:h-[1200px] 2xl:h-auto max-w-none" src={bgYellow2} alt="bgyellow" />
                 <div className=" px-6 relative pt-[200px] z-40 min-h-[400px]">
                     <div className="justify-center text-5xl hidden xl:flex py-20">
                         <span>How does</span>
                         <img src={catLetter2} alt="catletter" className="px-3" />
                         beta verion works?
                     </div>
-                    <div className="flex flex-col items-center justify-center gap-10 xl:flex-row">
-                        <div className="bg-white rounded-md flex flex-col items-center justify-center w-[421px] h-[246px] p-3">
-                            <div className="bg-dark-red rounded-[30px] font-spoof h-14 w-14 flex items-center justify-center">
+                    <div className="flex flex-col items-center justify-center gap-6 xl:flex-row">
+                        <div className="bg-white rounded-md flex flex-col items-center justify-center w-[421px] h-[246px] gap-[21px]">
+                            <div className="bg-dark-red rounded-[30px] font-spoof h-[60px] w-[60px] flex items-center justify-center">
                                 1
                             </div>
-                            <span className=" font-spoof text-2xl">
+                            <div className=" font-spoof text-2xl">
                                 Sign up and create an account
-                            </span>
-                            <span className=" font-spoof text-lg">
+                            </div>
+                            <div className=" text-center font-avenir text-lg px-[30.5px]">
                                 Send us a request as a client and fill up the form so we can
                                 create for you an account
-                            </span>
+                            </div>
                         </div>
 
-                        <div className="bg-white rounded-md flex flex-col items-center justify-center w-[421px] h-[246px] p-3">
-                            <div className="bg-dark-red rounded-[30px] font-spoof h-14 w-14 flex items-center justify-center">
+                        <div className="bg-white rounded-md flex flex-col items-center justify-center w-[421px] h-[246px] gap-[21px]">
+                            <div className="bg-dark-red rounded-[30px] font-spoof h-[60px] w-[60px] flex items-center justify-center">
                                 2
                             </div>
-                            <span className=" font-spoof text-2xl">
-                                Provide us with screener
-                            </span>
-                            <span className=" font-spoof text-lg">
+                            <div className=" font-spoof text-2xl">
+                                Provide us with your  screener
+                            </div>
+                            <div className=" text-center font-avenir text-lg px-[30.5px]">
                                 A customer support agent will be reaching out to collect from
                                 your the screener details
-                            </span>
+                            </div>
                         </div>
 
-                        <div className="bg-white rounded-md flex flex-col items-center justify-center w-[421px] h-[246px] p-3">
-                            <div className="bg-dark-red rounded-[30px] font-spoof h-14 w-14 flex items-center justify-center">
+                        <div className="bg-white rounded-md flex flex-col items-center justify-center w-[421px] h-[246px] gap-[21px]">
+                            <div className="bg-dark-red rounded-[30px] font-spoof h-[60px] w-[60px] flex items-center justify-center">
                                 3
                             </div>
-                            <span className=" font-spoof text-2xl">
+                            <div className=" font-spoof text-2xl">
                                 Scheduling the interview
-                            </span>
-                            <span className=" font-spoof text-lg">
+                            </div>
+                            <div className=" text-center font-avenir text-lg px-[30.5px]">
                                 We will ask you provide your schedule and timeline to get your
                                 interview ready
-                            </span>
+                            </div>
                         </div>
+
                     </div>
-                    <div className="flex items-center justify-center gap-3 mt-[150px] py-10">
+                    <div className="flex items-center justify-center gap-3 my-[100px]">
                         <img src={cat} alt="cat" />
                         <div className="px-2">
                             <div className=" font-spoof text-[21px]">
@@ -101,9 +101,10 @@ const Story = () => {
                     </div>
                 </div>
             </div>
-            <Faqs/>
-            <GoSales/>
-        </Outline>
+            <Faqs />
+            <div className="pb-[104px]"/>
+            <GoSales />
+        </>
     );
 };
 

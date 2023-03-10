@@ -9,7 +9,9 @@ module.exports = {
         yellow: "#F2FE53",
         "purple": "#271340",
         "orange": "#F7906D",
-        "dark-red": "#F7906D"
+        "dark-red": "#F7906D",
+        "border": "#D9D9D9",
+        "light": "#667085"
       },
       fontFamily: {
         'avenir': ['Avenir'],
@@ -17,7 +19,8 @@ module.exports = {
       },
       screens: {
         lg: "1170px",
-        '3xl': '1800px'
+        '3xl': '1800px',
+        'xs': "500px"
       }
     },
   },

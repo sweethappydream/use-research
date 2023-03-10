@@ -1,5 +1,4 @@
 import React from "react";
-import Layout from "../layout";
 import { triangle } from "../assets/svg";
 import {
   woman,
@@ -7,28 +6,28 @@ import {
   group2,
   group3,
   bgCom,
-  bgBlack,
   bgPic,
   bgYellow1,
   verticalCard,
+  catLetter,
+  cat, 
   catBig,
+} from "../assets/img";
+import {
   ddd,
   design,
   dollar,
   zoom,
-  catLetter,
-  cat,
-} from "../assets/img";
+} from "../assets/svg";
 import { BlackCard, Faqs, GoSales } from "../components/home";
-import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <Layout>
-      <div className="flex flex-col items-center px-9 py-16 lg:px-36 lg:flex-row gap-10">
+    <>
+      <div className="flex flex-col items-center px-[113px] py-16 lg:px-36 lg:flex-row gap-10">
         <div className="p-7 lg:w-[50%]">
           <div className=" text-4xl text-purple lg:text-6xl 2xl:text-8xl font-spoof">
             The easiest way to win faster with{" "}
@@ -65,14 +64,14 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="relative py-28 w-screen overflow-hidden">
+      <div className="relative w-screen overflow-hidden pt-20">
         <img
           className=" absolute left-[-30px] w-[1312px] max-w-none xl:w-[95%]"
           src={bgCom}
           alt="bgcom"
         />
         <img
-          className=" absolute right-[-100px] lg:right-0 top-[330px] lg:top-80 max-w-none h-[1500px] xl:w-[95%] lg:h-[1000px] z-30 xl:h-[1200px] 2xl:h-[1400px] "
+          className=" absolute right-[-100px] lg:right-0 top-[330px] lg:top-80 max-w-none h-[2000px] xs:h-[1500px] xl:w-[95%] lg:h-[1000px] z-30 xl:h-[1200px] 2xl:h-[1400px] "
           src={bgYellow1}
           alt="bgyellow"
         />
@@ -175,14 +174,14 @@ const Home = () => {
           alt="bgpic"
         />
 
-        <div className=" px-6 relative pt-[500px] z-40 min-h-[400px]">
+        <div className=" px-6 relative pt-[100px] sm:pt-[280px] md:pt-[500px] lg:pt-[310px] z-40">
           <div className="justify-center text-white text-5xl hidden xl:flex py-20">
             <span>How does</span>
             <img src={catLetter} alt="catletter" className="px-3" />
             beta verion works?
           </div>
           <div className="flex flex-col items-center justify-center gap-10 xl:flex-row">
-            <div className="bg-white rounded-md flex flex-col items-center justify-center w-[421px] h-[246px] p-3">
+            <div className="bg-white rounded-md flex flex-col items-center justify-center w-[380px] xs:w-[421px] h-[246px] p-3">
               <div className="bg-dark-red rounded-[30px] font-spoof h-14 w-14 flex items-center justify-center">
                 1
               </div>
@@ -195,7 +194,7 @@ const Home = () => {
               </span>
             </div>
 
-            <div className="bg-white rounded-md flex flex-col items-center justify-center w-[421px] h-[246px] p-3">
+            <div className="bg-white rounded-md flex flex-col items-center justify-center w-[380px] xs:w-[421px] h-[246px] p-3">
               <div className="bg-dark-red rounded-[30px] font-spoof h-14 w-14 flex items-center justify-center">
                 2
               </div>
@@ -208,7 +207,7 @@ const Home = () => {
               </span>
             </div>
 
-            <div className="bg-white rounded-md flex flex-col items-center justify-center w-[421px] h-[246px] p-3">
+            <div className="bg-white rounded-md flex flex-col items-center justify-center w-[380px] xs:w-[421px] h-[246px] p-3">
               <div className="bg-dark-red rounded-[30px] font-spoof h-14 w-14 flex items-center justify-center">
                 3
               </div>
@@ -221,7 +220,8 @@ const Home = () => {
               </span>
             </div>
           </div>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-3 mt-[150px]">
+
+          <div className="flex flex-col md:flex-row items-center justify-center gap-3 mt-[150px] mb-[81px]">
             <img src={cat} alt="cat" />
             <div className="px-2 flex flex-col justify-center md:justify-start md:items-start items-center">
               <div className=" font-spoof text-[21px] text-white">
@@ -236,11 +236,13 @@ const Home = () => {
               </div>
             </div>
           </div>
+          
         </div>
       </div>
-      <Faqs/>
-      <GoSales/>
-    </Layout>
+      <Faqs />
+      <div className="pb-[104px]"/>
+      <GoSales />
+    </>
   );
 };
 

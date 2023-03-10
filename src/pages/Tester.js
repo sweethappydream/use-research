@@ -1,19 +1,18 @@
 import React from "react";
-import Outline from "../layout";
-import { bgCom, bgYellow1, cat, catBig, catYel, design, location, paid, perspective, verticalCard, zoom } from "../assets/img";
+import { bgCom, bgYellow1,  catYel, location, paid, perspective, verticalCard } from "../assets/img";
 import { GoSales } from "../components/home";
 
 const Tester = () => {
     return (
-        <Outline>
-            <div className="relative py-28 w-screen overflow-hidden">
+        <>
+            <div className="relative pt-28 w-screen overflow-hidden">
                 <img
                     className=" absolute left-[-30px] w-[1312px] max-w-none xl:w-[85%]"
                     src={bgCom}
                     alt="bgcom"
                 />
                 <img
-                    className=" absolute right-[-100px] lg:right-0 top-[330px] lg:top-80 max-w-none h-[1400px] xl:w-[95%] z-30 xl:h-[1200px] 2xl:h-[1400px] 3xl:h-auto"
+                    className=" absolute right-[-100px] lg:right-0 top-[330px] lg:top-80 max-w-none h-[1400px] md:h-[1350px] xl:h-auto  2xl:w-[95%] z-30  2xl:h-[1400px] 3xl:h-auto"
                     src={bgYellow1}
                     alt="bgyellow"
                 />
@@ -23,9 +22,9 @@ const Tester = () => {
                     alt="verticalCard"
                 />
 
-                <div className="relative flex flex-col xl:flex-row xl:items-end pt-[430px] xl:pt-[430px] px-[14%] font-spoof z-50 gap-16">
+                <div className="relative flex flex-col xl:flex-row xl:items-end pt-[300px] sm:pt-[430px] xl:pt-[316px] px-[14%] font-spoof z-50 gap-[78px] mb-[238px]">
                     <div className="xl:w-[50%]">
-                        <div className=" text-4xl 3xl:text-7xl text-purple lg:text-6xl font-spoof pt-20 py-20">
+                        <div className=" text-[41px] text-purple 2xl:text-6xl font-spoof pt-10 md:pt-20 pb-9">
                             Get paid with <span className=" text-orange"> UserResearch! </span>
                         </div>
 
@@ -79,21 +78,24 @@ const Tester = () => {
                                 <img src={catYel} alt="cat" />
                                 Ready to get paid?
                             </div>
-                            <div className="flex flex-col py-3">
-                                <label for="name">Full Name</label>
-                                <input id="name" className="border border-[#E2E1E5] text-sm p-3 rounded-3xl" placeholder="Name" />
-                            </div>
-                            <div className="flex flex-col py-3">
-                                <label for="email">Email Address</label>
-                                <input id="email" className="border border-[#E2E1E5] text-sm p-3 rounded-3xl" placeholder="Name@domain.com" />
-                            </div>
-                            <button className="w-full text-lg bg-yellow rounded-3xl p-3 mt-3">Get Started</button>
+                            <form onSubmit="">
+                                <div className="flex flex-col py-3">
+                                    <label for="name">Full Name</label>
+                                    <input id="name" className="border border-[#E2E1E5] text-sm p-3 rounded-3xl" placeholder="Name" />
+                                </div>
+                                <div className="flex flex-col py-3">
+                                    <label for="email">Email Address</label>
+                                    <input id="email" className="border border-[#E2E1E5] text-sm p-3 rounded-3xl" placeholder="Name@domain.com" />
+                                </div>
+                                <button type="submit" className="w-full text-lg bg-yellow rounded-3xl p-3 mt-3">Get Started</button>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </div>
             <GoSales/>
-        </Outline>
+
+            </div>
+        </>
     )
 }
 

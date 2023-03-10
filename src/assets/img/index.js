@@ -2,6 +2,7 @@ import logo from "./logo.png";
 import bgBlack from "./bg-black.png"
 import bgYellow1 from "./bg-yel1.png"
 import bgYellow2 from "./bg-yel2.png"
+import bgYellow4 from "./bg-yel4.png"
 import catBig from "./cat-bit.png"
 import catLetter from "./cat-letter.png"
 import catLetter2 from "./cat-letter2.png"
@@ -35,5 +36,8 @@ import topCard from "./top-card.png"
 import topCard2 from "./top-card2.png"
 import bottomCard from "./bottom-card.png"
 import success from './success.png'
+import check from "./check.png"
+import wholeCardDown from "./whole-card-down.png"
+import wholeCardUp from "./whole-card-up.png"
 
-export {success, topCard,topCard2, bottomCard, catYel, paid, location, perspective, ahmed, mahmoud, muhamed, left, right, linkedin, facebook, twitter, logo, bgBlack, bgYellow1, bgYellow3, bgVerticalBlack, bgYellow2, catBig, catLetter, catLetter2, group1, group2, group3, verticalCard, woman, bgCom, bgPic, ddd, design, zoom, dollar, cat};
+export {wholeCardDown, wholeCardUp, success, check, topCard,topCard2, bottomCard, catYel, paid, location, perspective, ahmed, mahmoud, muhamed, left, right, linkedin, facebook, twitter, logo, bgBlack, bgYellow1, bgYellow3, bgVerticalBlack, bgYellow2,bgYellow4, catBig, catLetter, catLetter2, group1, group2, group3, verticalCard, woman, bgCom, bgPic, ddd, design, zoom, dollar, cat};
