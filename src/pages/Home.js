@@ -10,7 +10,7 @@ import {
   bgYellow1,
   verticalCard,
   catLetter,
-  cat, 
+  cat,
   catBig,
 } from "../assets/img";
 import {
@@ -27,9 +27,9 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center px-[113px] py-16 lg:px-36 lg:flex-row gap-10">
-        <div className="p-7 lg:w-[50%]">
-          <div className=" text-4xl text-purple lg:text-6xl 2xl:text-8xl font-spoof">
+      <div className="flex flex-col items-center px-[36px] sm:px-[113px] py-16 lg:px-36 lg:flex-row gap-10">
+        <div className="lg:w-[50%]">
+          <div className="text-center lg:text-start text-4xl text-purple lg:text-6xl 2xl:text-8xl font-spoof">
             The easiest way to win faster with{" "}
             <span className=" text-orange">proof</span>!
           </div>
@@ -39,7 +39,7 @@ const Home = () => {
             criteria and get to see how they are interacting with it.
           </div>
           <div className="flex items-center mt-6 lg:mt-8 font-spoof 2xl:text-2xl ">
-            <div className="flex items-center justify-center rounded-[41px] bg-yellow h-[49px] w-[161px] ">
+            <div className="flex items-center justify-center rounded-[41px] bg-yellow h-[49px] w-[161px] cursor-pointer" onClick={() => navigate('/plan')}>
               Get Started
             </div>
             <div className="flex items-center mx-6">
@@ -71,19 +71,19 @@ const Home = () => {
           alt="bgcom"
         />
         <img
-          className=" absolute right-[-100px] lg:right-0 top-[330px] lg:top-80 max-w-none h-[2000px] xs:h-[1500px] xl:w-[95%] lg:h-[1000px] z-30 xl:h-[1200px] 2xl:h-[1400px] "
+          className=" absolute right-[-100px] lg:right-0 top-[330px] lg:top-[200px] max-w-none w-[1312px] h-[2000px] xs:h-[1500px] md:h-[1200px] lg:h-[1000px] xl:h-auto 2xl:h-[1400px] 2xl:w-[95%] z-30"
           src={bgYellow1}
           alt="bgyellow"
         />
         <img
-          className=" absolute left-[-260px] lg:left-[-30px] top-0 w-[506px] max-w-none"
+          className=" absolute left-[-260px] lg:left-[30px] top-0 w-[506px] max-w-none z-40"
           src={verticalCard}
           alt="verticalCard"
         />
 
-        <div className="relative flex flex-col lg:flex-row pt-[430px] xl:pt-[530px] px-[14%] font-spoof z-50 gap-16">
+        <div className="relative flex flex-col lg:flex-row pt-[430px] xl:pt-[350px] px-[26px] sm:px-[14%] font-spoof z-50 gap-16">
           <div className="lg:w-[50%]">
-            <div className=" text-[41px] 2xl:text-[60px] py-3">
+            <div className="text-[35px] xl:text-[41px] 2xl:text-[60px] py-3">
               Why you should use UserResearch
             </div>
             <img src={catBig} alt="catbig" className="py-6" />
@@ -181,43 +181,43 @@ const Home = () => {
             beta verion works?
           </div>
           <div className="flex flex-col items-center justify-center gap-10 xl:flex-row">
-            <div className="bg-white rounded-md flex flex-col items-center justify-center w-[380px] xs:w-[421px] h-[246px] p-3">
-              <div className="bg-dark-red rounded-[30px] font-spoof h-14 w-14 flex items-center justify-center">
+            <div className="bg-white rounded-md flex flex-col items-center justify-center w-full h-[250px] sm:w-[421px] sm:h-[246px] gap-[21px]">
+              <div className="bg-dark-red rounded-[30px] font-spoof h-[60px] w-[60px] flex items-center justify-center">
                 1
               </div>
-              <span className=" font-spoof text-2xl">
+              <div className=" font-spoof text-2xl text-center">
                 Sign up and create an account
-              </span>
-              <span className=" font-spoof text-lg">
+              </div>
+              <div className=" text-center font-avenir text-lg px-[30.5px]">
                 Send us a request as a client and fill up the form so we can
                 create for you an account
-              </span>
+              </div>
             </div>
 
-            <div className="bg-white rounded-md flex flex-col items-center justify-center w-[380px] xs:w-[421px] h-[246px] p-3">
-              <div className="bg-dark-red rounded-[30px] font-spoof h-14 w-14 flex items-center justify-center">
+            <div className="bg-white rounded-md flex flex-col items-center justify-center w-full h-[250px] sm:w-[421px] sm:h-[246px] gap-[21px]">
+              <div className="bg-dark-red rounded-[30px] font-spoof h-[60px] w-[60px] flex items-center justify-center">
                 2
               </div>
-              <span className=" font-spoof text-2xl">
-                Provide us with screener
-              </span>
-              <span className=" font-spoof text-lg">
+              <div className=" font-spoof text-2xl text-center">
+                Provide us with your  screener
+              </div>
+              <div className=" text-center font-avenir text-lg px-[30.5px]">
                 A customer support agent will be reaching out to collect from
                 your the screener details
-              </span>
+              </div>
             </div>
 
-            <div className="bg-white rounded-md flex flex-col items-center justify-center w-[380px] xs:w-[421px] h-[246px] p-3">
-              <div className="bg-dark-red rounded-[30px] font-spoof h-14 w-14 flex items-center justify-center">
+            <div className="bg-white rounded-md flex flex-col items-center justify-center w-full h-[250px] sm:w-[421px] sm:h-[246px] gap-[21px]">
+              <div className="bg-dark-red rounded-[30px] font-spoof h-[60px] w-[60px] flex items-center justify-center">
                 3
               </div>
-              <span className=" font-spoof text-2xl">
+              <div className=" font-spoof text-2xl">
                 Scheduling the interview
-              </span>
-              <span className=" font-spoof text-lg">
+              </div>
+              <div className=" text-center font-avenir text-lg px-[30.5px]">
                 We will ask you provide your schedule and timeline to get your
                 interview ready
-              </span>
+              </div>
             </div>
           </div>
 
@@ -236,11 +236,11 @@ const Home = () => {
               </div>
             </div>
           </div>
-          
+
         </div>
       </div>
       <Faqs />
-      <div className="pb-[104px]"/>
+      <div className="pb-[104px]" />
       <GoSales />
     </>
   );

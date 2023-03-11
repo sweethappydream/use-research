@@ -37,7 +37,7 @@ const Plan = () => {
                                 <img src={check} alt="check" />
                                 1 credit / 1 User
                             </div>
-                            <button type="submit" className="w-full font-spoof font-bold text-lg bg-yellow rounded-3xl p-3 " onClick={() => navigate('/login')}>Subscribe Now</button>
+                            <button type="submit" className="w-full font-spoof font-bold text-lg bg-yellow rounded-3xl p-3 " onClick={() => navigate('/signin')}>Subscribe Now</button>
 
                         </div>
                         <div className="bg-white rounded-xl w-full sm:w-[592px] p-4 2xl:w-[670px]">

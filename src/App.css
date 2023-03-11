@@ -43,3 +43,25 @@
     transform: rotate(360deg);
   }
 }
+
+
+.slick-prev {
+  left: 26px !important;
+  top: 665px!important;
+  width: 51px !important;
+}
+
+.slick-next {
+  right: 26px !important;
+  top: 665px!important;
+  width: 80px !important;
+}
+
+.slick-slide > div {
+  display: grid;
+  place-items: center;
+  width: 80%;
+  margin-top: 50px;
+  margin: auto;
+  padding: 0px;
+}

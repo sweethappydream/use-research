@@ -2,8 +2,39 @@ import React from "react";
 import { bgYellow3, left, right } from "../assets/img";
 import { teamInfo, TeamCard } from "../components/team";
 import { GoSales } from "../components/home";
+import Slider from "react-slick";
 
 const Team = () => {
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        centerMode: true,
+        swipe: false,
+        responsive: [
+            {
+                breakpoint: 1440,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+            }
+        ],
+        prevArrow: <img className=" top-10 w-[60px]" src={left} alt="left" />,
+        nextArrow: <img className=" top-10 w-[80px]" src={right} alt="right" />
+    };
+
     return (
         <>
             <div className="relative">
@@ -13,17 +44,16 @@ const Team = () => {
                         Our <span className=" text-orange"> team </span> is ready <br />to help you!
                     </div>
                     <div className="text-center text-lg font-avenir py-10 3xl:text-2xl">
-                        We love what we do and we do it with passion. We value the experimentation <br/> of the message and smart incentives.
+                        We love what we do and we do it with passion. We value the experimentation <br /> of the message and smart incentives.
                     </div>
-                    <div className="flex flex-col justify-center gap-10 items-center lg:flex-row">
-                        {teamInfo.map(item => <TeamCard {...item}/>)}
-                    </div>
-                    <div className="flex justify-between p-10">
-                        <img src={left} alt="left"/>
-                        <img src={right} alt="right"/>
+                    <div className=" px-4">
+                        <Slider {...settings}>
+                            {teamInfo.map(item => <TeamCard key={item.name} {...item} />)}
+                            {teamInfo.map(item => <TeamCard key={item.name} {...item} />)}
+                        </Slider>
                     </div>
                 </div>
-                <GoSales/>
+                <GoSales />
             </div>
         </>
     )

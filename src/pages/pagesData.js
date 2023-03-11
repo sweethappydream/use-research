@@ -6,6 +6,8 @@ import TalkToExperts from "./TalkToExperts";
 import Team from "./Team";
 import Tester from "./Tester";
 import Outline from "../layout";
+import Signin from "./Signin";
+import Signup from "./Signup";
 
 const pagesData = [
   {
@@ -41,6 +43,14 @@ const pagesData = [
   {
     path: "contactsales",
     element: <ContactSales />,
+  },
+  {
+    path: "signin",
+    element: <Signin />,
+  },
+  {
+    path: "signup",
+    element: <Signup />,
   }
 ];
 

@@ -4,7 +4,7 @@ import FaqCard from "./FaqCard";
 const Faqs = () => {
   return (
     <div id="faqs" className="hidden flex-col items-center justify-center gap-6 font-spoof mt-20 xl:flex py-5 overflow-hidden">
-      <span className="py-4 text-[41px]">FAQs</span>
+      <span className="py-4 text-[41px]">Our Pricing</span>
       <FaqCard text="What kind of researches criteria that you support?"/>
       <FaqCard text="How expensive is UserResearch?"/>
       <FaqCard text="How are participants compensated?"/>

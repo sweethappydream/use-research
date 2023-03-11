@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const TeamCard = ({ image, name, title, urlfacebook, urltwitter, urllinkedin }) => {
     const navigate = useNavigate();
     return (
-        <div className="w-[429px] h-[500px] p-[25px] bg-white rounded-xl shaodw shadow-md hover:scale-110 transition-transform">
+        <div className="w-[429px] h-[500px] p-[25px] my-14 bg-white rounded-xl shadow-md hover:scale-110 transition-transform">
             <img className="pb-3" src={image} alt={image} />
             <div className="font-spoof text-2xl py-3">
                 {name}

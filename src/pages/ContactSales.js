@@ -14,7 +14,7 @@ const ContactSales = () => {
             <div className="relative md:w-[40%] overflow-hidden w-screen ">
                 <img className="w-[1000px] max-w-none" src={wholeCardDown} alt="topcard" />
                 <img className="w-[1000px] mt-[-10px] max-w-none" src={wholeCardDown} alt="topcard2" />
-                <div className="flex flex-col justify-center items-center px-[30px] md:px-[20px] xl:px-[71px]">
+                <div className="flex flex-col justify-center items-center pt-10 px-[30px] md:px-[20px] xl:px-[71px]">
 
                     <div className=" text-center text-[35px] text-purple xl:text-5xl font-spoof ">
                         Test with users <br /><span className=" text-orange"> on demand! </span>
