@@ -1,13 +1,13 @@
-import ContactSales from "./ContactSales";
-import Home from "./Home";
-import Plan from "./Plan";
-import Story from "./Story";
-import TalkToExperts from "./TalkToExperts";
-import Team from "./Team";
-import Tester from "./Tester";
+import ContactSales from "../pages/ContactSales";
+import Home from "../pages/Home";
+import Plan from "../pages/Plan";
+import Story from "../pages/Story";
+import TalkToExperts from "../pages/TalkToExperts";
+import Team from "../pages/Team";
+import Tester from "../pages/Tester";
 import Outline from "../layout";
-import Signin from "./Signin";
-import Signup from "./Signup";
+import Signin from "../pages/Signin";
+import Signup from "../pages/Signup";
 
 const pagesData = [
   {

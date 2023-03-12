@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="px-4 cursor-pointer" onClick={() => navigate('/story')}>Story</div>
         <div className="px-4 cursor-pointer" onClick={() => navigate('/team')}>Team</div>
         <div className="px-4 cursor-pointer" onClick={() => navigate('/#clients')}>Clients</div>
-        <div className="px-4 cursor-pointer" onClick={() => navigate('/#faqs')}>FAQs</div>
+        <div className="px-4 cursor-pointer" onClick={() => navigate('/plan')}>Our Pricing</div>
       </div>
       <div className="hidden justify-center items-center md:flex text-lg font-spoof">
         <img className="mx-3 cursor-pointer" src={facebook} alt="facebook"/>
