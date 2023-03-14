@@ -8,6 +8,7 @@ import PhoneInput from 'react-phone-input-2'
 import "react-phone-input-2/lib/style.css";
 import { google, linkedinBlue } from "../assets/svg";
 import { registerSchema1, registerSchema2, registerSchema3 } from "../components/validation";
+import { sendVerifyCode } from "../api";
 
 
 const Phone = () => {
@@ -39,9 +40,11 @@ const Signup = () => {
             navigate('/');
     }, [isLoggedIn, navigate]);
 
-    const submit = (values) => {
+    const submit = async (values) => {
         switch (step) {
             case 0:
+                const result = await sendVerifyCode(values);
+                console.log(result);
                 setStep(1);
                 break;
             case 1:
@@ -111,26 +114,26 @@ const Signup = () => {
                 </div>
             </div>
             :
-            <div>
-                <div className="flex gap-6 items-start justify-center">
-                    <div className="flex flex-col py-3 w-[171px] xs:w-full lg:w-[300px] 2xl:w-[400px] 2xl:py-5">
+            <div className="w-[100%]">
+                <div className="flex items-start justify-between gap-3">
+                    <div className="flex flex-col py-3 w-[171px] xs:w-[50%] 2xl:py-5">
                         <label htmlFor="job">Job Title</label>
                         <Field name="job" id="job" className="border border-[#E2E1E5] text-sm 2xl:text-lg p-3 rounded-3xl" placeholder="Job Title" />
                         <ErrorMessage component='a' className="text-red text-sm text-center pt-2" name='job' />
                     </div>
-                    <div className="flex flex-col py-3 w-[171px] xs:w-full lg:w-[300px] 2xl:w-[400px] 2xl:py-5">
+                    <div className="flex flex-col py-3 w-[171px] xs:w-[50%] 2xl:py-5">
                         <label htmlFor="phone">Phone Number</label>
                         <Field name="phone" id="phone" type="number" component={Phone} className="border border-[#E2E1E5] text-sm 2xl:text-lg p-3 rounded-3xl" placeholder="Phone Number" />
                         <ErrorMessage component='a' className="text-red text-sm text-center pt-2" name='phone' />
                     </div>
                 </div>
-                <div className="flex gap-6 items-start justify-center">
-                    <div className="flex flex-col py-3 w-[171px] xs:w-full lg:w-[300px] 2xl:w-[400px] 2xl:py-5">
+                <div className="flex items-start justify-between gap-3">
+                    <div className="flex flex-col py-3 w-[171px] xs:w-[50%] 2xl:py-5">
                         <label htmlFor="company">Compnay/Entity</label>
                         <Field name="company" id="company" className="border border-[#E2E1E5] text-sm 2xl:text-lg p-3 rounded-3xl" placeholder="Company/Entity" />
                         <ErrorMessage component='a' className="text-red text-sm text-center pt-2" name='company' />
                     </div>
-                    <div className="flex flex-col py-3 w-[171px] xs:w-full lg:w-[300px] 2xl:w-[400px] 2xl:py-5">
+                    <div className="flex flex-col py-3 w-[171px] xs:w-[50%] 2xl:py-5">
                         <label htmlFor="business">Business Sector</label>
                         <Field name="business" id="business" className="border border-[#E2E1E5] text-sm 2xl:text-lg p-3 rounded-3xl" placeholder="Business Sector" />
                         <ErrorMessage component='a' className="text-red text-sm text-center pt-2" name='business' />
@@ -140,13 +143,13 @@ const Signup = () => {
                     <label htmlFor="reason" className="w-[171px] xs:w-full lg:w-[300px] 2xl:w-[400px]">What is the reason you want to use</label>
                     <label htmlFor="password" className="w-[171px] xs:w-full lg:w-[300px] 2xl:w-[400px]">Create Password</label>
                 </div>
-                <div className="flex gap-6 items-start justify-center">
-                    <div className="flex flex-col py-3 w-[171px] xs:w-full lg:w-[300px] 2xl:w-[400px] 2xl:py-5">
+                <div className="flex items-start justify-between gap-3">
+                    <div className="flex flex-col py-3 w-[171px] xs:w-[50%] 2xl:py-5">
                         <Field id="reason" name="reason" className="border border-[#E2E1E5] text-sm 2xl:text-lg p-3 pr-10 rounded-3xl" placeholder="Example">
                         </Field>
                         <ErrorMessage component='a' className="text-red text-sm text-center pt-2" name='reason' />
                     </div>
-                    <div className="flex flex-col py-3 w-[171px] xs:w-full lg:w-[300px] 2xl:w-[400px] 2xl:py-5">
+                    <div className="flex flex-col py-3 w-[171px] xs:w-[50%] 2xl:py-5">
                         <Field name="password" id="password" type="password" className="border border-[#E2E1E5] text-sm 2xl:text-lg p-3 rounded-3xl" placeholder="************" />
                         <ErrorMessage component='a' className="text-red text-sm text-center pt-2" name='password' />
                     </div>
