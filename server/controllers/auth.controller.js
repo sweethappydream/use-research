@@ -94,7 +94,7 @@ const login = async (request, response) => {
 
 const sendVerifyCode = async (request, response) => {
     const { name, email } = request.body;
-    if(name === undefined || email === undefined) {
+    if (name === undefined || email === undefined) {
         response.status(400).json({
             error: 'request body',
             message: `insufficient params`,
@@ -110,45 +110,45 @@ const sendVerifyCode = async (request, response) => {
                 })
             }
 
-            
+
         }
         catch (error) {
             console.error(error)
             return response.status(500).send()
         }
     }
-    const nodemailer = require('nodemailer');
+    try {
+        const nodemailer = require('nodemailer');
 
-    // create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: process.env.myEmail,
-            pass: process.env.password
-        }
-    });
+        // create reusable transporter object using the default SMTP transport
+        let transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: "ethanmartin.0508@gmail.com",
+                pass: "agvbmcvvwddyfzpr"
+            }
+        });
 
-    // generate verification code
-    let verifyCode = Math.floor(100000 + Math.random() * 900000);
+        // generate verification code
+        let verifyCode = Math.floor(100000 + Math.random() * 900000);
 
-    // send mail with defined transport object
-    let mailOptions = {
-        from: process.env.myEmail,
-        to: email,
-        subject: 'Email Verification Code',
-        text: `Your verification code is ${verifyCode}.`
-    };
+        // send mail with defined transport object
+        let mailOptions = {
+            from: "ethanmartin.0508@gmail.com",
+            to: email,
+            subject: 'Email Verification Code for User Research',
+            text: `Your verification code is ${verifyCode}.`
+        };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    });
-    response.status(200).json({
-        message: "Verify code sent",
-    });    
+        await transporter.sendMail(mailOptions);
+        response.status(200).json({
+            message: "Verify code sent",
+        });
+    } catch (e) {
+        response.status(500).json({
+            message: e.message
+        })
+    }
 }
 
 
