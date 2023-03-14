@@ -11,6 +11,8 @@ router.post('/register', authController.register)
 
 router.post('/login', authController.login)
 
+router.post('/sendVerifyCode', authController.sendVerifyCode)
+
 router.post('/changeAccount', [authorizeBearerToken], authController.changeAccount)
 
 router.post('/changePassword', [authorizeBearerToken], authController.changePassword)

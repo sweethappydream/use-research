@@ -199,4 +199,6 @@ module.exports = {
     getAccount,
     changeAccount,
     changePassword,
+    sendVerifyCode,
+    verifyCode
 }

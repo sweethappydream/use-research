@@ -10,7 +10,7 @@ const EMAIL_API_KEY = "7ffdce70d6830ca57c0ef2cfefe42cab"
 const EMAIL_SECRET_KEY = "fe09887e5fbe004df84606570fea4747"
 
 // for "atlas" edit MONGO_URI in -> .env file || for "community server" edit <MyDatabase>
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/userResearch'
+const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://Travis:weilaimengxiang@cluster0.sssyig8.mongodb.net/test'
 const MONGO_OPTIONS = {}
 
 const JWT_SECRET = process.env.JWT_SECRET || 'warwideweb'
