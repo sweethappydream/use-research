@@ -124,8 +124,8 @@ const sendVerifyCode = async (request, response) => {
         let transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: "ethanmartin.0508@gmail.com",
-                pass: "agvbmcvvwddyfzpr"
+                user: process.env.myEmail,
+                pass: process.env.password
             }
         });
 
@@ -134,7 +134,7 @@ const sendVerifyCode = async (request, response) => {
 
         // send mail with defined transport object
         let mailOptions = {
-            from: "ethanmartin.0508@gmail.com",
+            from: process.env.myEmail,
             to: email,
             subject: 'Email Verification Code for User Research',
             text: `Your verification code is ${verifyCode}.`
