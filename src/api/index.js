@@ -27,4 +27,13 @@ const sendVerifyCode = async (data) => {
         return []
     }
 }
-export { login, register, sendVerifyCode }
+
+const verifyEmail = async (data) => {
+    try {
+        const result = await axios.post(BACKEND_URL + "/api/auth/verifyEmail", data);
+        return result.data;
+    } catch (e) {
+        return []
+    }
+}
+export { login, register, sendVerifyCode, verifyEmail }
