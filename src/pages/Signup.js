@@ -47,11 +47,13 @@ const Signup = () => {
             setStep(1);
         } else if (step === 1) {
             const result = await verifyEmail(values);
-            console.log(result);
-            setStep(2);
+            if(result.verifyToken) {
+                setStep(2);
+            } else {
+                setStep(0);
+            }
         } else {
-
-            signup(values);
+            signup({...values,});
         }
         // alert(values)
         // signup(values);
