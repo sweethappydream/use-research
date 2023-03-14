@@ -142,9 +142,9 @@ const sendVerifyCode = async (request, response) => {
 
         await transporter.sendMail(mailOptions);
 
-        const result = await Verify.findOne({email});
+        const result = await Verify.findOne({ email });
 
-        if(result) {
+        if (result) {
             result.code = verifyCode;
             result.expiresAt = new Date((new Date()).getTime() + 60000 * 5);
             await result.save();
@@ -170,10 +170,11 @@ const sendVerifyCode = async (request, response) => {
 
 const verifyCode = async (request, response) => {
     const { email, code } = request.body;
-    const result = await Verify.findOne({email});
-    if(result) {
-        if(result.code === code) {
-            const verifyToken = signVerifyToken(email);
+    console.log(email, code);
+    const result = await Verify.findOne({ email });
+    if (result) {
+        if (result.code.toString() === code) {
+            const verifyToken = signVerifyToken({email});
             response.status(201).json({
                 message: "success",
                 verifyToken
@@ -183,10 +184,12 @@ const verifyCode = async (request, response) => {
                 message: "verify code expired"
             })
         }
-    } 
-    response.status(500).json({
-        message: "email not verified"
-    })
+    } else {
+
+        response.status(500).json({
+            message: "email not verified"
+        })
+    }
 }
 
 const getAccount = async (request, response) => {

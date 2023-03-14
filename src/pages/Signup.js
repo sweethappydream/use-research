@@ -34,6 +34,7 @@ const Signup = () => {
     const navigate = useNavigate();
     const { signup, isLoggedIn } = useAuth();
     const [step, setStep] = useState(0);
+    const [email, setEmail] = useState("")
 
     useEffect(() => {
         if (isLoggedIn)
@@ -43,10 +44,11 @@ const Signup = () => {
     const submit = async (values) => {
         if (step === 0) {
             const result = await sendVerifyCode(values);
+            setEmail(values.email)
             console.log(result);
             setStep(1);
         } else if (step === 1) {
-            const result = await verifyEmail(values);
+            const result = await verifyEmail({...values, email});
             console.log(result);
             setStep(2);
         } else {

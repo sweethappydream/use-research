@@ -33,7 +33,7 @@ const verifyEmail = async (data) => {
         const result = await axios.post(BACKEND_URL + "/api/auth/verifyEmail", data);
         return result.data;
     } catch (e) {
-        return []
+        return e.message
     }
 }
 export { login, register, sendVerifyCode, verifyEmail }
