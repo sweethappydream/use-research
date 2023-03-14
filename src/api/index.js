@@ -12,7 +12,7 @@ const login = async (data) => {
 
 const register = async (data) => {
     try {
-        const result = await axios.post(BACKEND_URL + "/api/auth/login", data);
+        const result = await axios.post(BACKEND_URL + "/api/auth/register", data);
         return result.data;
     } catch (e) {
         return []

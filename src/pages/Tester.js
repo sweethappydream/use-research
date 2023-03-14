@@ -1,5 +1,5 @@
 import React from "react";
-import { bgCom, bgYellow1,  catYel, location, paid, perspective, verticalCard } from "../assets/img";
+import { bgCom, bgYellow1, catYel, location, paid, perspective, verticalCard } from "../assets/img";
 import { GoSales } from "../components/home";
 
 const Tester = () => {
@@ -11,20 +11,17 @@ const Tester = () => {
                     src={bgCom}
                     alt="bgcom"
                 />
-                <img
-                    className=" absolute right-[-100px] lg:right-0 top-[330px] lg:top-80 max-w-none h-[1400px] md:h-[1350px] xl:h-auto  2xl:w-[95%] z-30  2xl:h-[1400px] 3xl:h-auto"
-                    src={bgYellow1}
-                    alt="bgyellow"
-                />
+                <div className="absolute top-[300px] right-[-100px] lg:right-[-30px] w-[1300px] lg:w-full h-[1300px] sm:h-[1200px] lg:h-[827px] bg-yellow rounded-[68px] transform rotate-[-6deg] z-20 lg:max-w-[95%]" />
+
                 <img
                     className=" absolute left-[-260px] lg:left-[-30px] top-0 w-[506px] max-w-none"
                     src={verticalCard}
                     alt="verticalCard"
                 />
 
-                <div className="relative flex flex-col xl:flex-row xl:items-end pt-[300px] sm:pt-[430px] xl:pt-[316px] px-[14%] font-spoof z-50 gap-[78px] mb-[238px]">
-                    <div className="xl:w-[50%]">
-                        <div className=" text-[41px] text-purple 2xl:text-6xl font-spoof pt-10 md:pt-20 pb-9">
+                <div className="relative flex flex-col lg:flex-row lg:items-end pt-[300px] sm:pt-[316px] px-[14%] font-spoof z-50 gap-[78px] mb-[238px]">
+                    <div className="lg:w-[50%]" data-aos="fade-up">
+                        <div className=" text-[41px] text-purple font-spoof pt-10 md:pt-20 pb-9" >
                             Get paid with <span className=" text-orange"> UserResearch! </span>
                         </div>
 
@@ -33,10 +30,10 @@ const Tester = () => {
                                 <img src={paid} alt="paid" />
                             </div>
                             <div className=" font-spoof">
-                                <div className=" text-[21px] 2xl:text-[35px] ">
+                                <div className=" text-[21px]  ">
                                     Get paid $$$
                                 </div>
-                                <div className=" font-avenir text-[15px] 2xl:text-[24px] py-4">
+                                <div className=" font-avenir text-[15px] py-4">
                                     Make up to 6K per month by participating in testing products and ideas
                                 </div>
                             </div>
@@ -47,10 +44,10 @@ const Tester = () => {
                                 <img src={location} alt="location" />
                             </div>
                             <div className=" font-spoof">
-                                <div className=" text-[21px] 2xl:text-[35px] ">
+                                <div className=" text-[21px] ">
                                     Test whereever you are
                                 </div>
-                                <div className=" font-avenir text-[15px] 2xl:text-[24px] py-4">
+                                <div className=" font-avenir text-[15px] py-4">
                                     Wherever from a couch or in your dorm to a chair with the beach views
                                 </div>
                             </div>
@@ -61,10 +58,10 @@ const Tester = () => {
                                 <img src={perspective} alt="perspective" />
                             </div>
                             <div className=" font-spoof">
-                                <div className=" text-[21px] 2xl:text-[35px] ">
+                                <div className=" text-[21px] ">
                                     Share your perspective
                                 </div>
-                                <div className=" font-avenir text-[15px] 2xl:text-[24px] py-4">
+                                <div className=" font-avenir text-[15px] py-4">
                                     via tests you match to help world organizations’ products and services
                                 </div>
                             </div>
@@ -72,8 +69,8 @@ const Tester = () => {
 
                     </div>
 
-                    <div className="xl:w-[50%]">
-                        <div className="bg-white rounded-3xl w-full h-[386px] p-8">
+                    <div className="lg:w-[50%]">
+                        <div className="bg-white rounded-3xl w-full h-[386px] p-8 max-w-[1000px]" data-aos="fade-up">
                             <div className="flex items-center font-spoof text-2xl gap-4 pb-3">
                                 <img src={catYel} alt="cat" />
                                 Ready to get paid?
@@ -87,12 +84,12 @@ const Tester = () => {
                                     <label for="email">Email Address</label>
                                     <input id="email" className="border border-[#E2E1E5] text-sm p-3 rounded-3xl" placeholder="Name@domain.com" />
                                 </div>
-                                <button type="submit" className="w-full text-lg bg-yellow rounded-3xl p-3 mt-3">Get Started</button>
+                                <button type="submit" className="w-full text-lg bg-yellow hover:bg-dark-red hover:text-white rounded-3xl p-3 mt-3">Get Started</button>
                             </form>
                         </div>
                     </div>
                 </div>
-            <GoSales/>
+                <GoSales />
 
             </div>
         </>

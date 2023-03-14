@@ -7,10 +7,8 @@ import {
   group3,
   bgCom,
   bgPic,
-  bgYellow1,
   verticalCard,
   catLetter,
-  cat,
   catBig,
 } from "../assets/img";
 import {
@@ -21,15 +19,16 @@ import {
 } from "../assets/svg";
 import { BlackCard, Faqs, GoSales } from "../components/home";
 import { useNavigate } from "react-router-dom";
+import NeedHelp from "../components/home/NeedHelp";
 
 const Home = () => {
   const navigate = useNavigate();
 
   return (
     <>
-      <div className="flex flex-col items-center px-[36px] sm:px-[113px] py-16 lg:px-36 lg:flex-row gap-10">
-        <div className="lg:w-[50%]">
-          <div className="text-center lg:text-start text-4xl text-purple lg:text-6xl 2xl:text-8xl font-spoof">
+      <div className="flex flex-col items-center justify-between px-[36px] md:px-[113px] py-16 lg:px-[13%] lg:flex-row gap-10">
+        <div className="lg:w-[50%] lg:max-w-[600px]" data-aos="fade-in">
+          <div className="text-center lg:text-start text-4xl text-purple md:text-7xl font-spoof">
             The easiest way to win faster with{" "}
             <span className=" text-orange">proof</span>!
           </div>
@@ -39,21 +38,17 @@ const Home = () => {
             criteria and get to see how they are interacting with it.
           </div>
           <div className="flex items-center mt-6 lg:mt-8 font-spoof 2xl:text-2xl ">
-            <div className="flex items-center justify-center rounded-[41px] bg-yellow h-[49px] w-[161px] cursor-pointer" onClick={() => navigate('/plan')}>
+            <div className="flex items-center justify-center rounded-[41px] px-[45px] py-[15px] bg-yellow hover:bg-dark-red hover:text-white cursor-pointer" onClick={() => navigate('/plan')}>
               Get Started
-            </div>
-            <div className="flex items-center mx-6">
-              <img src={triangle} alt="triangle" />
-              <div className="underline px-2">See how it works!</div>
             </div>
           </div>
         </div>
-        <div className="lg:w-[50%] flex justify-center">
+        <div className="lg:w-[50%] flex justify-center" data-aos="zoom-in">
           <img src={woman} alt="woman" />
         </div>
       </div>
 
-      <div id="clients" className="text-center pb-10">
+      <div id="clients" className="text-center pb-10" >
         <div className=" font-spoof text-3xl p-7">
           Trusted by the leading companies of the future
         </div>
@@ -66,102 +61,86 @@ const Home = () => {
 
       <div className="relative w-screen overflow-hidden pt-20">
         <img
-          className=" absolute left-[-30px] w-[1312px] max-w-none xl:w-[95%]"
+          className=" absolute left-[-30px] w-[1312px] max-w-none "
           src={bgCom}
           alt="bgcom"
         />
+        <div className="absolute top-[300px] right-[-100px] md:right-[-30px] w-[1300px] lg:w-full h-[1500px] xs:h-[1300px] sm:h-[1000px] standard:h-[887px] bg-yellow rounded-[68px] transform rotate-[-6deg] z-20 lg:max-w-[90%]" />
         <img
-          className=" absolute right-[-100px] lg:right-0 top-[330px] lg:top-[200px] max-w-none w-[1312px] h-[2000px] xs:h-[1500px] md:h-[1200px] lg:h-[1000px] xl:h-auto 2xl:h-[1400px] 2xl:w-[95%] z-30"
-          src={bgYellow1}
-          alt="bgyellow"
-        />
-        <img
-          className=" absolute left-[-260px] lg:left-[30px] top-0 w-[506px] max-w-none z-40"
+          className=" absolute left-[-260px] lg:left-[-30px] top-0 w-[506px] max-w-none z-40"
           src={verticalCard}
           alt="verticalCard"
         />
 
-        <div className="relative flex flex-col lg:flex-row pt-[430px] xl:pt-[350px] px-[26px] sm:px-[14%] font-spoof z-50 gap-16">
-          <div className="lg:w-[50%]">
-            <div className="text-[35px] xl:text-[41px] 2xl:text-[60px] py-3">
+        <div className="relative flex flex-col md:flex-row lg:justify-between pt-[380px] px-[26px] lg:px-[20%] z-30 font-spoof gap-16">
+          <div className="lg:w-[50%] lg:max-w-[400px]" >
+            <div className="text-[35px] xl:text-[41px] py-3" data-aos="fade-up">
               Why you should use UserResearch
             </div>
-            <img src={catBig} alt="catbig" className="py-6" />
-            <div className="flex items-center py-2">
+            <img src={catBig} alt="catbig" className="py-6" data-aos="fade-up" />
+            <div data-aos="fade-up">
               <BlackCard title="Product Managers" />
-              <div className="px-2" />
               <BlackCard title="Product Designers" />
-            </div>
-            <div className="flex items-center py-2">
               <BlackCard title="Design Strategists" />
-              <div className="px-2" />
               <BlackCard title="Creators" />
-            </div>
-            <div className="flex items-center py-2">
               <BlackCard title="Startup Founders" />
-              <div className="px-2" />
               <BlackCard title="Universities Researchers" />
             </div>
           </div>
 
-          <div className="lg:w-[50%]">
-            <div className="flex items-start gap-2">
+          <div className="lg:w-[50%] lg:max-w-[400px]">
+            <div className="flex items-start gap-2" data-aos="fade-up">
               <div className="bg-black rounded-3xl p-3 w-12 h-12 min-w-[48px]">
                 <img src={zoom} alt="zoom" />
               </div>
               <div className=" font-spoof">
-                <div className=" text-[21px] 2xl:text-[35px] ">
-                  Validate your product ideas and assess market demand
+                <div className=" text-[21px] ">
+                  Validate your product ideas and assess market demand 
                 </div>
-                <div className=" font-avenir text-[15px] 2xl:text-[24px] py-4">
-                  UserResearch is a platform that help creators, Product
-                  managers, founders.
+                <div className=" font-avenir text-[15px] py-4">
+                  Validating ideas and market demand is now way easier, talk to your potential user to understand their needs before making big investments
                 </div>
               </div>
             </div>
 
-            <div className="flex items-start gap-2">
+            <div className="flex items-start gap-2" data-aos="fade-up">
               <div className="bg-black rounded-3xl p-3 w-12 h-12 min-w-[48px]">
                 <img src={design} alt="design" />
               </div>
               <div className=" font-spoof">
-                <div className=" text-[21px] 2xl:text-[35px] ">
-                  Convince your stakeholders with your desing decisions with a
-                  proof
+                <div className=" text-[21px] ">
+                  Convince your stakeholder with your design decisions with a proof
                 </div>
-                <div className=" font-avenir text-[15px] 2xl:text-[24px] py-4">
-                  UserResearch is a platform that help creators, Product
-                  managers.
+                <div className=" font-avenir text-[15px] py-4">
+                  Collect feedback from actual and potential users of your product, build your next product feature supported by user feedback
                 </div>
               </div>
             </div>
 
-            <div className="flex items-start gap-2">
+            <div className="flex items-start gap-2" data-aos="fade-up">
               <div className="bg-black rounded-3xl p-3 w-12 h-12 min-w-[48px]">
                 <img src={dollar} alt="dollar" />
               </div>
               <div className=" font-spoof">
-                <div className=" text-[21px] 2xl:text-[35px] ">
-                  Save time and money finding users to test with
+                <div className=" text-[21px] ">
+                  Save time and money finding users to test with 
                 </div>
-                <div className=" font-avenir text-[15px] 2xl:text-[24px] py-4">
-                  UserResearch is a platform that help creators, Product
-                  managers, founders.
+                <div className=" font-avenir text-[15px] py-4">
+                  Don’t let finding research participants consume your time and stretch your overall research time. UseResearch connects you with the users criteria you’re looking for in no time 
                 </div>
               </div>
             </div>
 
-            <div className="flex items-start gap-2">
+            <div className="flex items-start gap-2" data-aos="fade-up">
               <div className="bg-black rounded-3xl p-3 w-12 h-12 min-w-[48px] flex items-center justify-center">
                 <img src={ddd} alt="ddd" />
               </div>
               <div className=" font-spoof">
-                <div className=" text-[21px] 2xl:text-[35px] ">
+                <div className=" text-[21px] ">
                   Fill the research gap in your design process
                 </div>
-                <div className=" font-avenir text-[15px] 2xl:text-[24px] py-4">
-                  UserResearch is a platform that help creators, Product
-                  managers.
+                <div className=" font-avenir text-[15px] py-4">
+                 Assumptions and intuitions are great, but validating them with actual users is even better
                 </div>
               </div>
             </div>
@@ -169,19 +148,19 @@ const Home = () => {
         </div>
 
         <img
-          className=" absolute  w-full max-w-none  z-20 h-[1700px] 2xl:h-auto"
+          className=" absolute  w-full max-w-none  z-10 h-[1700px] 2xl:h-auto"
           src={bgPic}
           alt="bgpic"
         />
 
-        <div className=" px-6 relative pt-[100px] sm:pt-[280px] md:pt-[500px] lg:pt-[310px] z-40">
-          <div className="justify-center text-white text-5xl hidden xl:flex py-20">
+        <div className=" px-6 relative pt-[100px] sm:pt-[280px] md:pt-[300px] lg:pt-[210px] z-40">
+          <div className="justify-center text-white text-5xl hidden xl:flex py-20" data-aos="fade-up">
             <span>How does</span>
             <img src={catLetter} alt="catletter" className="px-3" />
-            beta verion works?
+            beta version works?
           </div>
           <div className="flex flex-col items-center justify-center gap-10 xl:flex-row">
-            <div className="bg-white rounded-md flex flex-col items-center justify-center w-full h-[250px] sm:w-[421px] sm:h-[246px] gap-[21px]">
+            <div className="bg-white rounded-[19px] flex flex-col items-center justify-start w-full xs:w-[421px] h-[270px] pt-[30px] xs:gap-4" data-aos="fade-up">
               <div className="bg-dark-red rounded-[30px] font-spoof h-[60px] w-[60px] flex items-center justify-center">
                 1
               </div>
@@ -189,54 +168,35 @@ const Home = () => {
                 Sign up and create an account
               </div>
               <div className=" text-center font-avenir text-lg px-[30.5px]">
-                Send us a request as a client and fill up the form so we can
-                create for you an account
+                Join UseResearch as researcher and create your account instantly
               </div>
             </div>
 
-            <div className="bg-white rounded-md flex flex-col items-center justify-center w-full h-[250px] sm:w-[421px] sm:h-[246px] gap-[21px]">
+            <div className="bg-white rounded-[19px] flex flex-col items-center justify-start w-full xs:w-[421px] h-[270px] pt-[30px] xs:gap-4" data-aos="fade-up">
               <div className="bg-dark-red rounded-[30px] font-spoof h-[60px] w-[60px] flex items-center justify-center">
                 2
               </div>
               <div className=" font-spoof text-2xl text-center">
-                Provide us with your  screener
+                Start your research project
               </div>
               <div className=" text-center font-avenir text-lg px-[30.5px]">
-                A customer support agent will be reaching out to collect from
-                your the screener details
+                Start your project now by adding your research criteria and your screener questions and you will be matched with your research participants
               </div>
             </div>
 
-            <div className="bg-white rounded-md flex flex-col items-center justify-center w-full h-[250px] sm:w-[421px] sm:h-[246px] gap-[21px]">
+            <div className="bg-white rounded-[19px] flex flex-col items-center justify-start w-full xs:w-[421px] h-[270px] pt-[30px] xs:gap-4" data-aos="fade-up">
               <div className="bg-dark-red rounded-[30px] font-spoof h-[60px] w-[60px] flex items-center justify-center">
                 3
               </div>
               <div className=" font-spoof text-2xl">
-                Scheduling the interview
+                Interview your users
               </div>
               <div className=" text-center font-avenir text-lg px-[30.5px]">
-                We will ask you provide your schedule and timeline to get your
-                interview ready
+                Our team will schedule all of your research interviews based on your availability so you could start interviewing and collect insights
               </div>
             </div>
           </div>
-
-          <div className="flex flex-col md:flex-row items-center justify-center gap-3 mt-[150px] mb-[81px]">
-            <img src={cat} alt="cat" />
-            <div className="px-2 flex flex-col justify-center md:justify-start md:items-start items-center">
-              <div className=" font-spoof text-[21px] text-white">
-                Do you need help?
-              </div>
-              <div className=" font-avenir text-center text-[15px] text-white w-[350px] py-4">
-                We provide free consolation that will asses you with the best
-                method to research
-              </div>
-              <div className="flex items-center justify-center rounded-[41px] bg-yellow text-lg h-[49px] w-[200px] cursor-pointer" onClick={() => navigate('/talktoexperts')}>
-                Talk to an expert
-              </div>
-            </div>
-          </div>
-
+          <NeedHelp />
         </div>
       </div>
       <Faqs />

@@ -2,7 +2,7 @@ import React from "react";
 
 const BlackCard = ({title}) => {
     return (
-        <div className="py-2 xl:py-3 px-2 xl:px-4 text-sm xl:text-lg text-white rounded-3xl bg-black">
+        <div className="px-[11px] py-[8px] text-sm w-fit text-white rounded-3xl bg-black inline-block m-1">
             {title}
         </div>
     )

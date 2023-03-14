@@ -5,7 +5,7 @@ const { signToken } = require('../middlewares/authMiddleware')
 
 const register = async (request, response) => {
     const { name, password, email, job, reason, phone, company, business } = request.body
-    if (name === undefined || password === undefined || email === undefined || job === undefined || reason === undefined || phone === undefined || company === undefined || business === undefined ) {
+    if (name === undefined || password === undefined || email === undefined || job === undefined || reason === undefined || phone === undefined || company === undefined || business === undefined) {
         response.status(400).json({
             error: 'request body',
             message: `insufficient params`,
@@ -16,8 +16,8 @@ const register = async (request, response) => {
             const user = await User.findOne({ email })
             if (user) {
                 return response.status(400).json({
-                    error: name,
-                    message: `An account already exists with ${name}`,
+                    error: email,
+                    message: `An account already exists with ${email}`,
                 })
             }
 
@@ -33,7 +33,7 @@ const register = async (request, response) => {
             delete newUser.password
 
             // Generate access token
-            const token = signToken({ name, email })
+            const token = signToken({ email })
 
             response.status(201).json({
                 message: 'Succesfully registered',
@@ -49,8 +49,8 @@ const register = async (request, response) => {
 }
 
 const login = async (request, response) => {
-    const { name, password, wallet } = request.body
-    if (name === undefined || password === undefined || wallet === undefined) {
+    const { email, password } = request.body
+    if (email === undefined || password === undefined) {
         response.status(400).json({
             error: 'request body',
             message: `insufficient params`,
@@ -58,8 +58,8 @@ const login = async (request, response) => {
     }
     else {
         try {
-            const { name, password, wallet } = request.body;
-            const user = await User.findOne({ name });
+            const { email, password } = request.body;
+            const user = await User.findOne({ email });
             if (!user) {
                 return response.status(400).json({
                     message: "Unregistered User",
@@ -73,18 +73,12 @@ const login = async (request, response) => {
                 });
             }
 
-            if (wallet != user.wallet) {
-                return response.status(400).json({
-                    message: "plz use registered wallet",
-                });
-            }
-
             // Remove password from response data
             user.password = undefined;
             delete user.password;
 
             // Generate access token
-            const token = signToken({ name: name, wallet: wallet });
+            const token = signToken({ email });
 
             response.status(200).json({
                 message: "Succesfully logged-in",
@@ -96,6 +90,47 @@ const login = async (request, response) => {
             response.status(500).send(error);
         }
     }
+}
+
+const sendVerifyCode = async (req, res) => {
+    const { name, email } = req.body;
+    const nodemailer = require('nodemailer');
+
+    // create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.myEmail,
+            pass: process.env.password
+        }
+    });
+
+    // generate verification code
+    let verifyCode = Math.floor(100000 + Math.random() * 900000);
+
+    // send mail with defined transport object
+    let mailOptions = {
+        from: process.env.myEmail,
+        to: email,
+        subject: 'Email Verification Code',
+        text: `Your verification code is ${verifyCode}.`
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+    res.status(200).json({
+        message: "Verify code sent",
+    });    
+}
+
+
+const verifyCode = async (req, res) => {
+    const { code } = req.body;
 }
 
 const getAccount = async (request, response) => {

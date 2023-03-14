@@ -11,16 +11,18 @@ module.exports = {
         "orange": "#F7906D",
         "dark-red": "#F7906D",
         "border": "#D9D9D9",
-        "light": "#667085"
+        "light": "#667085",
+        red: "#ff0000"
       },
       fontFamily: {
         'avenir': ['Avenir'],
         'spoof': ['Spoof']
       },
       screens: {
+        'xs': "500px",
         lg: "1170px",
+        'standard': '1435px',
         '3xl': '1800px',
-        'xs': "500px"
       }
     },
   },

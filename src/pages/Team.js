@@ -20,7 +20,6 @@ const Team = () => {
                     slidesToShow: 2,
                     slidesToScroll: 1,
                     infinite: true,
-                    dots: true
                 }
             },
             {
@@ -37,16 +36,16 @@ const Team = () => {
 
     return (
         <>
-            <div className="relative">
-                <img className="absolute w-full 3xl:h-[1100px]" src={bgYellow3} alt="bgyellow" />
+            <div className="relative w-screen overflow-x-auto">
+                <img className="absolute w-[1440px] standard:w-full h-[771px] max-w-none" src={bgYellow3} alt="bgyellow" />
                 <div className="relative pb-[145px] 3xl:mb-40">
-                    <div className=" text-center text-4xl  text-purple lg:text-6xl font-spoof pt-20">
+                    <div className=" text-center text-4xl  text-purple lg:text-6xl font-spoof pt-20" data-aos="fade-in">
                         Our <span className=" text-orange"> team </span> is ready <br />to help you!
                     </div>
-                    <div className="text-center text-lg font-avenir py-10 3xl:text-2xl">
+                    <div className="text-center text-lg font-avenir py-10 3xl:text-2xl" data-aos="fade-in">
                         We love what we do and we do it with passion. We value the experimentation <br /> of the message and smart incentives.
                     </div>
-                    <div className=" px-4">
+                    <div className=" px-4" data-aos="fade-up">
                         <Slider {...settings}>
                             {teamInfo.map(item => <TeamCard key={item.name} {...item} />)}
                             {teamInfo.map(item => <TeamCard key={item.name} {...item} />)}

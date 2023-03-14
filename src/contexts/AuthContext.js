@@ -1,16 +1,12 @@
 
-import React, { createContext, useContext, useState, useEffect } from "react";
-import axios from "../utils/axios";
+import React, { createContext, useEffect, useState } from "react";
+import axios from "axios";
 import { login, register } from "../api";
 
-const AuthContext = createContext();
-
-export function useAuth() {
-  return useContext(AuthContext);
-}
+export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("token")!== null);
   const [account, setAccount] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("token") || null);
 
@@ -18,8 +14,8 @@ export function AuthProvider({ children }) {
     const result = await register(formData);
     setAccount(result.data);
     setToken(result.token);
+    setIsLoggedIn(true);
   }
-    
 
   const signin = async (formData = {}) =>{
     const result = await login(formData);

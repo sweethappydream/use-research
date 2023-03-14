@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 const { JWT_SECRET } = require('../constants')
 
-const signToken = (payload = {}, expiresIn = '12h') => {
+const signToken = (payload = {}, expiresIn = '1h') => {
   const token = jwt.sign(payload, JWT_SECRET, { expiresIn })
   return token
 }

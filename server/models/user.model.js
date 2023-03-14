@@ -7,7 +7,6 @@ const UserSchema = new mongoose.Schema(
             type: String,
             required: true,
             lowercase: true,
-            unique: true,
         },
         password: {
             type: String,
@@ -16,6 +15,7 @@ const UserSchema = new mongoose.Schema(
         email: {
             type: String,
             required: true,
+            unique: true
         },
         job: {
             type: String,
@@ -37,6 +37,10 @@ const UserSchema = new mongoose.Schema(
         reason: {
             type: String,
             required: false
+        },
+        verifyCode: {
+            type: Number,
+            required: false 
         }        
     },
     {

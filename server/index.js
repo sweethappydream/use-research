@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const router = require('./router');
 const mongo = require('./utils/mongo')
+require('dotenv'). config();
 
 const app = express();
 let corsOptions = {

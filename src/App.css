@@ -57,6 +57,15 @@
   width: 80px !important;
 }
 
+@media screen and  (max-width: 600px) {
+  .slick-prev {
+    top: 550px!important;
+  }
+  .slick-next {
+    top: 550px!important;
+  }
+}
+
 .slick-slide > div {
   display: grid;
   place-items: center;
@@ -64,4 +73,101 @@
   margin-top: 50px;
   margin: auto;
   padding: 0px;
+}
+
+.UR-contact-sales {
+  position: relative;
+}
+
+.UR-contact-sales::before, .UR-contact-sales::after {
+  content: "";
+  display: block;
+  height: 30px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  background: #F2FE53 url("./assets/svg/useResearch.svg") center center;
+  z-index: 60!important;
+}
+
+.UR-contact-sales::before {
+  top: 2px;
+  transform: rotate(2deg);
+}
+
+.UR-contact-sales::after {
+  bottom: 2px;
+  transform: rotate(-2deg);
+}
+
+.UR-features  {
+  content: "";
+  width: 100%;
+  max-width: 90%;
+  height: 827px;
+  background: #F2FE53;
+  border-radius: 68px;
+  transform: rotate(-6deg);
+  position: absolute;
+  top: 300px;
+  right: -30px;
+  left: auto;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input, PhoneInput{
+  display: block;
+  box-sizing: border-box !important ;
+  width: 100% !important;
+  border-radius: 30px !important;
+  font-size: 18px !important;
+  margin-left: 10px;
+}
+
+.react-tel-input .form-control {
+  height: 50px!important;
+}
+
+.accordion .accordion-item {
+  background: #F2FE53;
+  border-radius: 23px;
+  border: 0;
+}
+
+.accordion .accordion-item .accordion-button {
+  padding: 24px 30px;
+  background-color: transparent;
+  font-family: 'Spoof';
+  font-weight: 500;
+  font-size: 20.62px;
+  line-height: 91.7%;
+  color: #000000;
+  border-radius: 23px 23px 0 0;
+  box-shadow: none;
+  outline: none;
+}
+
+.accordion .accordion-item .accordion-button::after {
+  width: 50px;
+  height: 50px;
+  background-image: url("./assets/svg/addFaq.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.accordion .accordion-item .accordion-button.collapsed::after {
+  background-image: url("./assets/svg/addFaq.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.accordion .accordion-item .accordion-body {
+  padding: 1rem 1.25rem;
+  padding: 24px 30px;
+  border-top: 1px solid rgba(247, 144, 109, 0.19);
 }
