@@ -14,7 +14,8 @@ class MongoDB {
     if (this.isConnected) return
 
     try {
-      const db = await this.mongoose.connect(this.MONGO_URI, this.MONGO_OPTIONS)
+      console.log(process.env.MONGO_URI);
+      const db = await this.mongoose.connect(process.env.MONGO_URI, this.MONGO_OPTIONS)
       const connection = db.connection
 
       this.isConnected = connection.readyState === 1
