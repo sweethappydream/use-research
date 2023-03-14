@@ -1,8 +1,13 @@
 const jwt = require('jsonwebtoken')
-const { JWT_SECRET } = require('../constants')
+const { JWT_SECRET, VERIFY_SECRET } = require('../constants')
 
 const signToken = (payload = {}, expiresIn = '1h') => {
   const token = jwt.sign(payload, JWT_SECRET, { expiresIn })
+  return token
+}
+
+const signVerifyToken = (payload = {}, expiresIn = '1800') => {
+  const token = jwt.sign(payload, VERIFY_SECRET, { expiresIn })
   return token
 }
 
@@ -35,4 +40,5 @@ const authorizeBearerToken = async (request, response, next) => {
 module.exports = {
   authorizeBearerToken,
   signToken,
+  signVerifyToken
 }

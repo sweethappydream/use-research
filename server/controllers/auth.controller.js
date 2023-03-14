@@ -1,7 +1,8 @@
 const bcrypt = require('bcrypt')
 const User = require('../models/user.model')
+const Verify = require('../models/verify.model')
 
-const { signToken } = require('../middlewares/authMiddleware')
+const { signToken, signVerifyToken } = require('../middlewares/authMiddleware')
 
 const register = async (request, response) => {
     const { name, password, email, job, reason, phone, company, business } = request.body
@@ -36,7 +37,7 @@ const register = async (request, response) => {
             const token = signToken({ email })
 
             response.status(201).json({
-                message: 'Succesfully registered',
+                message: 'Successfully registered',
                 data: newUser,
                 token,
             })
@@ -110,7 +111,6 @@ const sendVerifyCode = async (request, response) => {
                 })
             }
 
-
         }
         catch (error) {
             console.error(error)
@@ -141,6 +141,22 @@ const sendVerifyCode = async (request, response) => {
         };
 
         await transporter.sendMail(mailOptions);
+
+        const result = await Verify.findOne({email});
+
+        if(result) {
+            result.code = verifyCode;
+            result.expiresAt = new Date((new Date()).getTime() + 60000 * 5);
+            await result.save();
+        } else {
+            const temp = {};
+            temp.email = email;
+            temp.code = verifyCode;
+            temp.expiresAt = new Date((new Date()).getTime() + 60000 * 5);
+            const verify = new Verify(temp);
+            await verify.save()
+        }
+
         response.status(200).json({
             message: "Verify code sent",
         });
@@ -152,8 +168,25 @@ const sendVerifyCode = async (request, response) => {
 }
 
 
-const verifyCode = async (req, res) => {
-    const { code } = req.body;
+const verifyCode = async (request, response) => {
+    const { email, code } = request.body;
+    const result = await Verify.findOne({email});
+    if(result) {
+        if(result.code === code) {
+            const verifyToken = signVerifyToken(email);
+            response.status(201).json({
+                message: "success",
+                verifyToken
+            })
+        } else {
+            response.status(401).json({
+                message: "verify code expired"
+            })
+        }
+    } 
+    response.status(500).json({
+        message: "email not verified"
+    })
 }
 
 const getAccount = async (request, response) => {

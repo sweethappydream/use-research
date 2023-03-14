@@ -1,6 +1,6 @@
 const ORIGIN = '*'
 const BASECLIENTURL = "http://localhost"
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 5000
 const EMAIL_API_KEY = "7ffdce70d6830ca57c0ef2cfefe42cab"
 const EMAIL_SECRET_KEY = "fe09887e5fbe004df84606570fea4747"
 
