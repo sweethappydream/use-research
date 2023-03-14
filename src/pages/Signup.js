@@ -34,7 +34,7 @@ const Signup = () => {
     const navigate = useNavigate();
     const { signup, isLoggedIn } = useAuth();
     const [step, setStep] = useState(0);
-    const [email, setEmail] = useState("")
+    const [data, setData] = useState({})
 
     useEffect(() => {
         if (isLoggedIn)
@@ -44,15 +44,23 @@ const Signup = () => {
     const submit = async (values) => {
         if (step === 0) {
             const result = await sendVerifyCode(values);
-            setEmail(values.email)
+            setData(values)
             console.log(result);
-            setStep(1);
+            if (result.message === "Verify code sent") {
+                setStep(1)
+            }
         } else if (step === 1) {
-            const result = await verifyEmail({...values, email});
+            const result = await verifyEmail({ ...values, email: data.email });
             console.log(result);
-            setStep(2);
+            if (result.verifyToken) {
+                setStep(2)
+                localStorage.set("verifyToken", result.verifyToken)
+            } else {
+                setStep(0);
+            }
         } else {
-            signup({...values,});
+            const verifyToken = localStorage.get("verifyToken");
+            signup({ ...values, ...data, verifyToken });
         }
         // alert(values)
         // signup(values);
