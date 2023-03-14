@@ -92,8 +92,31 @@ const login = async (request, response) => {
     }
 }
 
-const sendVerifyCode = async (req, res) => {
-    const { name, email } = req.body;
+const sendVerifyCode = async (request, response) => {
+    const { name, email } = request.body;
+    if(name === undefined || email === undefined) {
+        response.status(400).json({
+            error: 'request body',
+            message: `insufficient params`,
+        })
+    }
+    else {
+        try {
+            const user = await User.findOne({ email })
+            if (user) {
+                return response.status(400).json({
+                    error: email,
+                    message: `An account already exists with ${email}`,
+                })
+            }
+
+            
+        }
+        catch (error) {
+            console.error(error)
+            return response.status(500).send()
+        }
+    }
     const nodemailer = require('nodemailer');
 
     // create reusable transporter object using the default SMTP transport
@@ -123,7 +146,7 @@ const sendVerifyCode = async (req, res) => {
             console.log('Email sent: ' + info.response);
         }
     });
-    res.status(200).json({
+    response.status(200).json({
         message: "Verify code sent",
     });    
 }
