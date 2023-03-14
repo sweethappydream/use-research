@@ -18,4 +18,13 @@ const register = async (data) => {
         return []
     }
 }
-export { login, register }
+
+const sendVerifyCode = async (data) => {
+    try {
+        const result = await axios.post(BACKEND_URL + "/api/auth/sendVerifyCode", data);
+        return result.data;
+    } catch (e) {
+        return []
+    }
+}
+export { login, register, sendVerifyCode }
