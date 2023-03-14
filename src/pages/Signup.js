@@ -8,7 +8,7 @@ import PhoneInput from 'react-phone-input-2'
 import "react-phone-input-2/lib/style.css";
 import { google, linkedinBlue } from "../assets/svg";
 import { registerSchema1, registerSchema2, registerSchema3 } from "../components/validation";
-import { sendVerifyCode } from "../api";
+import { sendVerifyCode, verifyEmail } from "../api";
 
 
 const Phone = () => {
@@ -41,20 +41,17 @@ const Signup = () => {
     }, [isLoggedIn, navigate]);
 
     const submit = async (values) => {
-        switch (step) {
-            case 0:
-                const result = await sendVerifyCode(values);
-                console.log(result);
-                setStep(1);
-                break;
-            case 1:
-                setStep(2);
-                break;
-            case 2:
-                signup(values);
-                break;
-            default:
-                break;
+        if (step === 0) {
+            const result = await sendVerifyCode(values);
+            console.log(result);
+            setStep(1);
+        } else if (step === 1) {
+            const result = await verifyEmail(values);
+            console.log(result);
+            setStep(2);
+        } else {
+
+            signup(values);
         }
         // alert(values)
         // signup(values);
