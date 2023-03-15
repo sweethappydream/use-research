@@ -199,6 +199,8 @@ const Signup = () => {
             </div>;
 
     const validationSchema = step === 0 ? registerSchema1 : step === 1 ? registerSchema2 : registerSchema3;
+    const darkPercent = 33 * (step + 1);
+    const whitePercent = 33 * (3 - step - 1);
 
     return (
         <div className="flex flex-col-reverse md:flex-row md:h-screen">
@@ -215,8 +217,8 @@ const Signup = () => {
 
                     <div>
                         <div className="text-center flex justify-center items-center pt-12">
-                            <div className={`h-[8px] w-[${33 * (step + 1)}%] bg-dark-red`} />
-                            <div className={`h-[8px] w-[${33 * (3 - step - 1)}%] bg-border`} />
+                            <div className={`h-[8px] w- w-[${darkPercent}%] bg-dark-red`} />
+                            <div className={`h-[8px] w-[${whitePercent}%] bg-border`} />
                         </div>
                         <Formik
                             initialValues={initialValues}
