@@ -32,8 +32,8 @@ const Phone = () => {
 
 const Signup = () => {
     const navigate = useNavigate();
-    const { signup, isLoggedIn } = useAuth();
-    const [step, setStep] = useState(0);
+    const { signup, isLoggedIn, verifyCode, verifyToken } = useAuth();
+    const [step, setStep] = useState(verifyToken !== undefined ? 2 : 0);
     const [data, setData] = useState({})
 
     useEffect(() => {
@@ -50,7 +50,7 @@ const Signup = () => {
                 setStep(1)
             }
         } else if (step === 1) {
-            const result = await verifyEmail({ ...values, email: data.email });
+            const result = await verifyCode({ ...values, email: data.email });
             console.log(result);
             if (result.verifyToken) {
                 setStep(2)
@@ -59,8 +59,10 @@ const Signup = () => {
                 setStep(0);
             }
         } else {
-            const verifyToken = localStorage.get("verifyToken");
-            signup({ ...values, ...data, verifyToken });
+            if(verifyToken)
+                signup({ ...values, ...data, verifyToken });
+            else 
+                setStep(0);
         }
         // alert(values)
         // signup(values);

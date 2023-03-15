@@ -10,9 +10,11 @@ const login = async (data) => {
     }
 }
 
-const register = async (data) => {
+const register = async (data, token) => {
     try {
-        const result = await axios.post(BACKEND_URL + "/api/auth/register", data);
+        const result = await axios.post(BACKEND_URL + "/api/auth/register", data, {
+            headers: `Verify ${token}`
+        });
         return result.data;
     } catch (e) {
         return e
@@ -30,7 +32,7 @@ const sendVerifyCode = async (data) => {
 
 const verifyEmail = async (data) => {
     try {
-        const result = await axios.post(BACKEND_URL + "/api/auth/verifyEmail", data);
+        const result = await axios.post(BACKEND_URL + "/api/auth/verifyEmail", data)
         return result.data;
     } catch (e) {
         return e

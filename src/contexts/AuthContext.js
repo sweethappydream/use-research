@@ -1,7 +1,7 @@
 
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
-import { login, register } from "../api";
+import { login, register, verifyEmail } from "../api";
 
 export const AuthContext = createContext();
 
@@ -9,19 +9,39 @@ export function AuthProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("token")!== null);
   const [account, setAccount] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("token") || null);
+  const [verifyToken, setVerifyToken] = useState(localStorage.getItem("verifyToken") || null);
+  const [error,setError ] = useState("");
 
   const signup = async (formData = {}) => {
-    const result = await register(formData);
-    setAccount(result.data);
-    setToken(result.token);
-    setIsLoggedIn(true);
+    try {
+      const result = await register(formData);
+      setAccount(result.data);
+      setToken(result.token);
+      setIsLoggedIn(true);
+    } catch(e) {
+      setError(e.message);
+    }
   }
 
   const signin = async (formData = {}) =>{
-    const result = await login(formData);
-    setAccount(result.data);
-    setToken(result.token);
-    setIsLoggedIn(true);
+    try{
+      const result = await login(formData);
+      setAccount(result.data);
+      setToken(result.token);
+      setIsLoggedIn(true);
+    } catch(e) {
+      setError(e.message);
+    }
+  }
+
+  const verifyCode = async (formData = {}) => {
+    try {
+      const result = await verifyEmail(formData);
+      setVerifyToken(result.verifyToken);
+    } catch(e) {
+      setError(e.message)
+    }
+
   }
 
   const logout = () => {
@@ -96,11 +116,14 @@ export function AuthProvider({ children }) {
         isLoggedIn,
         account,
         token,
+        verifyToken,
+        error,
         signup,
         signin,
         logout,
         changeAccount,
         changePassword,
+        verifyCode,
       }}
     >
       {children}

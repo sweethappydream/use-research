@@ -1,5 +1,5 @@
 const express = require('express')
-const { authorizeBearerToken } = require('../middlewares/authMiddleware')
+const { authorizeBearerToken, authorizeVerifyToken } = require('../middlewares/authMiddleware')
 
 const authController = require('../controllers/auth.controller.js')
 
@@ -7,7 +7,7 @@ const router = express.Router()
 
 router.get('/getAccount', [authorizeBearerToken], authController.getAccount)
 
-router.post('/register', authController.register)
+router.post('/register', [authorizeVerifyToken], authController.register)
 
 router.post('/login', authController.login)
 
