@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt')
 const User = require('../models/user.model')
 const Verify = require('../models/verify.model')
+const axios = require('axios')
 
 const { signToken, signVerifyToken } = require('../middlewares/authMiddleware')
 
@@ -175,7 +176,7 @@ const verifyCode = async (request, response) => {
     const result = await Verify.findOne({ email });
     if (result) {
         if (result.code.toString() === code) {
-            const verifyToken = signVerifyToken({email});
+            const verifyToken = signVerifyToken({ email });
             response.status(201).json({
                 message: "success",
                 verifyToken
@@ -191,6 +192,39 @@ const verifyCode = async (request, response) => {
             message: "email not verified"
         })
     }
+}
+
+const googleVerify = async (req, res) => {
+    const { accessToken } = req.body;
+
+    axios
+        .get("https://www.googleapis.com/oauth2/v3/userinfo", {
+            headers: {
+                "Authorization": `Bearer ${accessToken}`
+            }
+        })
+        .then(async response => {
+            const firstName = response.data.given_name;
+            const lastName = response.data.family_name;
+            const email = response.data.email;
+
+            const existingUser = await User.findOne({ email })
+
+            if (existingUser)
+                return res.status(400).json({ message: "User already exist!" })
+
+            const verifyToken = signVerifyToken({email});
+            const name = firstName + " " + lastName;
+
+            res
+                .status(200)
+                .json({ name, email, verifyToken })
+        })
+        .catch(err => {
+            res
+                .status(400)
+                .json({ message: "Invalid access token!" })
+        })
 }
 
 const getAccount = async (request, response) => {
@@ -260,5 +294,6 @@ module.exports = {
     changeAccount,
     changePassword,
     sendVerifyCode,
-    verifyCode
+    verifyCode,
+    googleVerify
 }

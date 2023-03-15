@@ -1,7 +1,7 @@
 
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
-import { login, register, verifyEmail } from "../api";
+import { googleVerify, login, register, verifyEmail } from "../api";
 
 export const AuthContext = createContext();
 
@@ -17,7 +17,6 @@ export function AuthProvider({ children }) {
       const result = await register(formData, verifyToken);
       setAccount(result.data);
       setToken(result.token);
-      setIsLoggedIn(true);
       setVerifyToken(null);
     } catch(e) {
       setError(e.message);
@@ -44,7 +43,17 @@ export function AuthProvider({ children }) {
       setError(e.message);
       return e;
     }
+  }
 
+  const verifyWithGoogle = async (data) => {
+    try {
+      const result = await googleVerify(data);
+      setVerifyToken(result.verifyToken);
+      return result;
+    } catch(e) {
+      setError(e.message);
+      return e;
+    }
   }
 
   const logout = () => {
@@ -135,6 +144,7 @@ export function AuthProvider({ children }) {
         changeAccount,
         changePassword,
         verifyCode,
+        verifyWithGoogle
       }}
     >
       {children}

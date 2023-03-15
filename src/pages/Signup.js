@@ -1,14 +1,16 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { logo } from "../assets/img";
+import React, { useContext, useEffect, useState } from "react";
+import PhoneInput from 'react-phone-input-2'
 import { useNavigate } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from 'formik'
+import { useGoogleLogin } from "@react-oauth/google";
+import "react-phone-input-2/lib/style.css";
+
+import { logo } from "../assets/img";
 import { useAuth } from "../hooks";
 import LeftScreen from "../components/LeftScreen";
-import PhoneInput from 'react-phone-input-2'
-import "react-phone-input-2/lib/style.css";
 import { google, linkedinBlue } from "../assets/svg";
 import { registerSchema1, registerSchema2, registerSchema3 } from "../components/validation";
-import { sendVerifyCode, verifyEmail } from "../api";
+import { sendVerifyCode } from "../api";
 import { PhoneContext } from "../contexts/PhoneContext";
 
 
@@ -33,7 +35,7 @@ const PhoneNumber = () => {
 
 const Signup = () => {
     const navigate = useNavigate();
-    const { signup, isLoggedIn, verifyCode, verifyToken } = useAuth();
+    const { signup, isLoggedIn, verifyCode, verifyToken, verifyWithGoogle } = useAuth();
     const [step, setStep] = useState(verifyToken !== null ? 2 : 0);
     const [data, setData] = useState({})
     const [phone, setPhone] = useState('');
@@ -101,11 +103,11 @@ const Signup = () => {
             </div>
             <div className="py-8 font-spoof font-medium text-center">Or</div>
             <div className="flex justify-center items-center gap-5">
-                <div className="flex justify-center items-center py-[11px] px-[17px] bg-white gap-2 shadow-md">
+                <div className="flex justify-center items-center py-[11px] px-[17px] bg-white gap-2 shadow-md cursor-pointer" onClick={login}>
                     <img src={google} alt="google" />
                     <div className=" text-sm font-avenir">Signup with Google</div>
                 </div>
-                <div className="flex justify-center items-center py-[11px] px-[17px] bg-white gap-2 shadow-md">
+                <div className="flex justify-center items-center py-[11px] px-[17px] bg-white gap-2 shadow-md cursor-pointer" onClick={login}>
                     <img src={linkedinBlue} alt="linkedinblue" />
                     <div className=" text-sm font-avenir">Signup with Linkedin</div>
                 </div>
@@ -168,6 +170,22 @@ const Signup = () => {
             </div>;
 
     const validationSchema = step === 0 ? registerSchema1 : step === 1 ? registerSchema2 : registerSchema3;
+
+    const handleGoogleLoginSuccess = async (tokenResponse) => {
+        const accessToken = tokenResponse.access_token;
+        const result = await verifyWithGoogle(accessToken);
+        if(result.email) {
+            setData({
+                email: result.email,
+                name: result.name
+            })
+            setStep(2);
+        }
+    }
+
+    const login = useGoogleLogin({onSuccess: handleGoogleLoginSuccess});
+
+
 
     return (
         <div className="flex flex-col-reverse md:flex-row md:h-screen">

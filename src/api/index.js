@@ -41,4 +41,13 @@ const verifyEmail = async (data) => {
         return e
     }
 }
-export { login, register, sendVerifyCode, verifyEmail }
+
+const googleVerify = async (data) => {
+    try {
+        const result = await axios.post(BACKEND_URL + "/api/auth/googleVerify", data)
+        return result.data;
+    } catch (e) {
+        return e
+    }
+}
+export { login, register, sendVerifyCode, verifyEmail, googleVerify }
