@@ -15,7 +15,7 @@ router.post('/sendVerifyCode', authController.sendVerifyCode)
 
 router.post('/verifyEmail', authController.verifyCode)
 
-router.post('/googleVerify', authController.googleVerify)
+router.post('/socialVerify', authController.socialVerify)
 
 router.post('/changeAccount', [authorizeBearerToken], authController.changeAccount)
 

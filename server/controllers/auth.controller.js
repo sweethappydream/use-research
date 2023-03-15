@@ -169,7 +169,6 @@ const sendVerifyCode = async (request, response) => {
     }
 }
 
-
 const verifyCode = async (request, response) => {
     const { email, code } = request.body;
     console.log(email, code);
@@ -194,11 +193,18 @@ const verifyCode = async (request, response) => {
     }
 }
 
-const googleVerify = async (req, res) => {
-    const { accessToken } = req.body;
+const socialVerify = async (req, res) => {
+    const { type, accessToken } = req.body;
+    console.log(accessToken);
+    let apiUri = "";
+    if( type === "google") {
+        apiUri = "https://www.googleapis.com/oauth2/v3/userinfo";
+    } else {
+        apiUri = "https://www.linkedin.com/oauth/v2/authorization"
+    }
 
     axios
-        .get("https://www.googleapis.com/oauth2/v3/userinfo", {
+        .get(apiUri, {
             headers: {
                 "Authorization": `Bearer ${accessToken}`
             }
@@ -295,5 +301,5 @@ module.exports = {
     changePassword,
     sendVerifyCode,
     verifyCode,
-    googleVerify
+    socialVerify
 }

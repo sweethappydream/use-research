@@ -1,7 +1,7 @@
 
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
-import { googleVerify, login, register, verifyEmail } from "../api";
+import { socialVerify, login, register, verifyEmail } from "../api";
 
 export const AuthContext = createContext();
 
@@ -45,9 +45,9 @@ export function AuthProvider({ children }) {
     }
   }
 
-  const verifyWithGoogle = async (data) => {
+  const verifyWithSocial = async (data) => {
     try {
-      const result = await googleVerify(data);
+      const result = await socialVerify(data);
       setVerifyToken(result.verifyToken);
       return result;
     } catch(e) {
@@ -144,7 +144,7 @@ export function AuthProvider({ children }) {
         changeAccount,
         changePassword,
         verifyCode,
-        verifyWithGoogle
+        verifyWithSocial
       }}
     >
       {children}

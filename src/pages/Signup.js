@@ -12,10 +12,11 @@ import { google, linkedinBlue } from "../assets/svg";
 import { registerSchema1, registerSchema2, registerSchema3 } from "../components/validation";
 import { sendVerifyCode } from "../api";
 import { PhoneContext } from "../contexts/PhoneContext";
+import { useLinkedIn } from "react-linkedin-login-oauth2";
 
 
 const PhoneNumber = () => {
-    const { phone, setPhone} = useContext(PhoneContext)
+    const { phone, setPhone } = useContext(PhoneContext)
 
     const handleOnChange = value => {
         setPhone(value);
@@ -35,12 +36,12 @@ const PhoneNumber = () => {
 
 const Signup = () => {
     const navigate = useNavigate();
-    const { signup, isLoggedIn, verifyCode, verifyToken, verifyWithGoogle } = useAuth();
+    const { signup, isLoggedIn, verifyCode, verifyToken, verifyWithSocial } = useAuth();
     const [step, setStep] = useState(verifyToken !== null ? 2 : 0);
     const [data, setData] = useState({})
     const [phone, setPhone] = useState('');
 
-    const phoneValue = { phone, setPhone}
+    const phoneValue = { phone, setPhone }
 
     useEffect(() => {
         if (isLoggedIn)
@@ -54,7 +55,7 @@ const Signup = () => {
             console.log(result);
             if (result.message === "Verify code sent") {
                 setStep(1)
-            }
+            } else alert(result.message)
         } else if (step === 1) {
             const result = await verifyCode({ ...values, email: data.email });
             console.log(result);
@@ -87,6 +88,27 @@ const Signup = () => {
         phone: '',
     };
 
+    const handleGoogleLoginSuccess = async (tokenResponse, type) => {
+        const accessToken = tokenResponse.access_token;
+        const result = await verifyWithSocial({ type, accessToken });
+        if (result.email) {
+            setData({
+                email: result.email,
+                name: result.name
+            })
+            setStep(2);
+        }
+    }
+
+    const login = useGoogleLogin({ onSuccess: (code) => handleGoogleLoginSuccess(code, "google") });
+
+    const { linkedInLogin } = useLinkedIn({
+        clientId: '81wrdonc7mzh15',
+        onSuccess: (code) => {
+            handleGoogleLoginSuccess(code, "linkedin")
+        }
+    });
+
     const formBody = step === 0 ?
         <div className="text-center w-[100%]">
             <div className="flex items-start justify-between gap-3">
@@ -107,7 +129,7 @@ const Signup = () => {
                     <img src={google} alt="google" />
                     <div className=" text-sm font-avenir">Signup with Google</div>
                 </div>
-                <div className="flex justify-center items-center py-[11px] px-[17px] bg-white gap-2 shadow-md cursor-pointer" onClick={login}>
+                <div className="flex justify-center items-center py-[11px] px-[17px] bg-white gap-2 shadow-md cursor-pointer" onClick={linkedInLogin}>
                     <img src={linkedinBlue} alt="linkedinblue" />
                     <div className=" text-sm font-avenir">Signup with Linkedin</div>
                 </div>
@@ -170,22 +192,6 @@ const Signup = () => {
             </div>;
 
     const validationSchema = step === 0 ? registerSchema1 : step === 1 ? registerSchema2 : registerSchema3;
-
-    const handleGoogleLoginSuccess = async (tokenResponse) => {
-        const accessToken = tokenResponse.access_token;
-        const result = await verifyWithGoogle(accessToken);
-        if(result.email) {
-            setData({
-                email: result.email,
-                name: result.name
-            })
-            setStep(2);
-        }
-    }
-
-    const login = useGoogleLogin({onSuccess: handleGoogleLoginSuccess});
-
-
 
     return (
         <div className="flex flex-col-reverse md:flex-row md:h-screen">
