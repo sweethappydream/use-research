@@ -11,9 +11,12 @@ const login = async (data) => {
 }
 
 const register = async (data, token) => {
+    console.log(data, token);
     try {
         const result = await axios.post(BACKEND_URL + "/api/auth/register", data, {
-            headers: `Verify ${token}`
+            headers: {
+                Authorization: `Verify ${token}`
+            }
         });
         return result.data;
     } catch (e) {

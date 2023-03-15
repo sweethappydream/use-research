@@ -14,10 +14,11 @@ export function AuthProvider({ children }) {
 
   const signup = async (formData = {}) => {
     try {
-      const result = await register(formData);
+      const result = await register(formData, verifyToken);
       setAccount(result.data);
       setToken(result.token);
       setIsLoggedIn(true);
+      setVerifyToken(null);
     } catch(e) {
       setError(e.message);
     }
@@ -38,8 +39,10 @@ export function AuthProvider({ children }) {
     try {
       const result = await verifyEmail(formData);
       setVerifyToken(result.verifyToken);
+      return result;
     } catch(e) {
-      setError(e.message)
+      setError(e.message);
+      return e;
     }
 
   }
@@ -104,6 +107,14 @@ export function AuthProvider({ children }) {
       localStorage.removeItem("token");
     }
   }, [token]);
+
+  useEffect(() => {
+    if (verifyToken) {
+      localStorage.setItem("verifyToken", verifyToken);
+    } else {
+      localStorage.removeItem("verifyToken");
+    }
+  }, [verifyToken]);
 
   useEffect(() => {
     if (!isLoggedIn && !account && token)

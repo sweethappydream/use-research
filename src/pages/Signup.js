@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { logo } from "../assets/img";
 import { useNavigate } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from 'formik'
@@ -9,10 +9,11 @@ import "react-phone-input-2/lib/style.css";
 import { google, linkedinBlue } from "../assets/svg";
 import { registerSchema1, registerSchema2, registerSchema3 } from "../components/validation";
 import { sendVerifyCode, verifyEmail } from "../api";
+import { PhoneContext } from "../contexts/PhoneContext";
 
 
-const Phone = () => {
-    const [phone, setPhone] = useState('');
+const PhoneNumber = () => {
+    const { phone, setPhone} = useContext(PhoneContext)
 
     const handleOnChange = value => {
         setPhone(value);
@@ -33,8 +34,11 @@ const Phone = () => {
 const Signup = () => {
     const navigate = useNavigate();
     const { signup, isLoggedIn, verifyCode, verifyToken } = useAuth();
-    const [step, setStep] = useState(verifyToken !== undefined ? 2 : 0);
+    const [step, setStep] = useState(verifyToken !== null ? 2 : 0);
     const [data, setData] = useState({})
+    const [phone, setPhone] = useState('');
+
+    const phoneValue = { phone, setPhone}
 
     useEffect(() => {
         if (isLoggedIn)
@@ -54,14 +58,13 @@ const Signup = () => {
             console.log(result);
             if (result.verifyToken) {
                 setStep(2)
-                localStorage.set("verifyToken", result.verifyToken)
             } else {
                 setStep(0);
             }
         } else {
-            if(verifyToken)
-                signup({ ...values, ...data, verifyToken });
-            else 
+            if (verifyToken)
+                signup({ ...values, ...data, phone });
+            else
                 setStep(0);
         }
         // alert(values)
@@ -131,7 +134,7 @@ const Signup = () => {
                     </div>
                     <div className="flex flex-col py-3 w-[171px] xs:w-[50%] 2xl:py-5">
                         <label htmlFor="phone">Phone Number</label>
-                        <Field name="phone" id="phone" type="number" component={Phone} className="border border-[#E2E1E5] text-sm 2xl:text-lg p-3 rounded-3xl" placeholder="Phone Number" />
+                        <Field name="phone" id="phone" type="number" component={PhoneNumber} className="border border-[#E2E1E5] text-sm 2xl:text-lg p-3 rounded-3xl" placeholder="Phone Number" />
                         <ErrorMessage component='a' className="text-red text-sm text-center pt-2" name='phone' />
                     </div>
                 </div>
@@ -189,14 +192,16 @@ const Signup = () => {
                             validationSchema={validationSchema}
                             onSubmit={submit}
                         >
-                            <Form className="mt-[54px]">
-                                {formBody}
-                                <button type="submit" className="w-full text-lg bg-yellow rounded-3xl p-3 mt-16 font-spoof">{step === 2 ? "Sign up" : "Next"}</button>
-                                <div className="mt-[23px] text-[15px] text-center">
-                                    Alreay have an account?
-                                    <a className="underline font-semibold" href="/signin"> Sign In</a>
-                                </div>
-                            </Form>
+                            <PhoneContext.Provider value={phoneValue}>
+                                <Form className="mt-[54px]">
+                                    {formBody}
+                                    <button type="submit" className="w-full text-lg bg-yellow rounded-3xl p-3 mt-16 font-spoof">{step === 2 ? "Sign up" : "Next"}</button>
+                                    <div className="mt-[23px] text-[15px] text-center">
+                                        Alreay have an account?
+                                        <a className="underline font-semibold" href="/signin"> Sign In</a>
+                                    </div>
+                                </Form>
+                            </PhoneContext.Provider>
                         </Formik>
                     </div>
 

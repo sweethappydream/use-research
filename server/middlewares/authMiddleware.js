@@ -6,7 +6,7 @@ const signToken = (payload = {}, expiresIn = '1h') => {
   return token
 }
 
-const signVerifyToken = (payload = {}, expiresIn = '1800') => {
+const signVerifyToken = (payload = {}, expiresIn = '1h') => {
   const token = jwt.sign(payload, VERIFY_SECRET, { expiresIn })
   return token
 }
@@ -40,6 +40,7 @@ const authorizeBearerToken = async (request, response, next) => {
 const authorizeVerifyToken = async (request, response, next) => {
   try {
     const token = request.headers.authorization?.split(' ')[1]
+    console.log('middleware',token);
     if (!token) {
       return response.status(400).json({
         message: 'Token not provided',

@@ -6,6 +6,7 @@ const { signToken, signVerifyToken } = require('../middlewares/authMiddleware')
 
 const register = async (request, response) => {
     const { name, password, email, job, reason, phone, company, business } = request.body
+    console.log(request.body);
     if (name === undefined || password === undefined || email === undefined || job === undefined || reason === undefined || phone === undefined || company === undefined || business === undefined) {
         response.status(400).json({
             error: 'request body',
