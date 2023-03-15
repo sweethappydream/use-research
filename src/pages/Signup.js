@@ -40,6 +40,7 @@ const Signup = () => {
     const [step, setStep] = useState(verifyToken !== null ? 2 : 0);
     const [data, setData] = useState({})
     const [phone, setPhone] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const phoneValue = { phone, setPhone }
 
@@ -50,13 +51,16 @@ const Signup = () => {
 
     const submit = async (values) => {
         if (step === 0) {
+            setLoading(true)
             const result = await sendVerifyCode(values);
             setData(values)
             console.log(result);
             if (result.message === "Verify code sent") {
                 setStep(1)
             } else alert(result.message)
+            setLoading(false);
         } else if (step === 1) {
+            setLoading(true);
             const result = await verifyCode({ ...values, email: data.email });
             console.log(result);
             if (result.verifyToken) {
@@ -64,11 +68,14 @@ const Signup = () => {
             } else {
                 setStep(0);
             }
+            setLoading(false)
         } else {
+            setLoading(true)
             if (verifyToken)
                 signup({ ...values, ...data, phone });
             else
                 setStep(0);
+            setLoading(false);
         }
         // alert(values)
         // signup(values);
@@ -219,7 +226,17 @@ const Signup = () => {
                             <PhoneContext.Provider value={phoneValue}>
                                 <Form className="mt-[54px]">
                                     {formBody}
-                                    <button type="submit" className="w-full text-lg bg-yellow rounded-3xl p-3 mt-16 font-spoof">{step === 2 ? "Sign up" : "Next"}</button>
+                                    <button type="submit" className="w-full text-lg bg-yellow rounded-3xl p-3 mt-16 font-spoof">
+                                        <div
+                                            className={`h-6 w-6 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.225em] mr-2 text-secondary motion-reduce:animate-[spin_1.5s_linear_infinite] ${loading ? "inline-block":"hidden"}`}
+                                            role="status">
+                                            <span
+                                                className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+                                            >Loading...</span
+                                            >
+                                        </div>
+                                        {step === 2 ? "Sign up" : "Next"}
+                                    </button>
                                     <div className="mt-[23px] text-[15px] text-center">
                                         Alreay have an account?
                                         <a className="underline font-semibold" href="/signin"> Sign In</a>
