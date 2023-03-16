@@ -6,7 +6,6 @@ import { socialVerify, login, register, verifyEmail } from "../api";
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("token")!== null);
   const [account, setAccount] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("token") || null);
   const [verifyToken, setVerifyToken] = useState(localStorage.getItem("verifyToken") || null);
@@ -28,7 +27,6 @@ export function AuthProvider({ children }) {
       const result = await login(formData);
       setAccount(result.data);
       setToken(result.token);
-      setIsLoggedIn(true);
     } catch(e) {
       setError(e.message);
     }
@@ -57,7 +55,6 @@ export function AuthProvider({ children }) {
   }
 
   const logout = () => {
-    setIsLoggedIn(false);
     setAccount(null);
     setToken(null);
   };
@@ -74,7 +71,6 @@ export function AuthProvider({ children }) {
 
       setAccount(accountData);
       setToken(accessToken);
-      setIsLoggedIn(true);
     } catch (error) {
       if (error?.response?.statusCode === 401) setToken(null);
     }
@@ -103,7 +99,6 @@ export function AuthProvider({ children }) {
 
       setAccount(response.data.data);
       setToken(response.data.token);
-      setIsLoggedIn(true);
       return response.data.message;
     } catch (error) {
       return (error);
@@ -126,14 +121,13 @@ export function AuthProvider({ children }) {
   }, [verifyToken]);
 
   useEffect(() => {
-    if (!isLoggedIn && !account && token)
+    if (!account && token)
       getAccount();
-  }, [isLoggedIn, account, token]); // eslint-disable-line react-hooks/exhaustive-deps
-
+  }, [account, token]); // eslint-disable-line react-hooks/exhaustive-deps
+  
   return (
     <AuthContext.Provider
       value={{
-        isLoggedIn,
         account,
         token,
         verifyToken,

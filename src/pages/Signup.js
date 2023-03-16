@@ -36,7 +36,7 @@ const PhoneNumber = () => {
 
 const Signup = () => {
     const navigate = useNavigate();
-    const { signup, isLoggedIn, verifyCode, verifyToken, verifyWithSocial } = useAuth();
+    const { signup, token, verifyCode, verifyToken, verifyWithSocial } = useAuth();
     const [step, setStep] = useState(verifyToken !== null ? 2 : 0);
     const [data, setData] = useState({})
     const [phone, setPhone] = useState('');
@@ -45,9 +45,9 @@ const Signup = () => {
     const phoneValue = { phone, setPhone }
 
     useEffect(() => {
-        if (isLoggedIn)
+        if (token)
             navigate('/');
-    }, [isLoggedIn, navigate]);
+    }, [token, navigate]);
 
     const submit = async (values) => {
         if (step === 0) {
@@ -151,7 +151,7 @@ const Signup = () => {
                     We have emailed you 6 digits code. Please check your e-mail and enter the code here to complete the verification.
                 </div>
                 <div className="flex flex-col py-3 w-[171px] xs:w-[50%] 2xl:py-5 pb-24">
-                    <Field name="code" id="code" className="border border-[#E2E1E5] text-sm 2xl:text-lg p-3 rounded-3xl" placeholder="123-456" />
+                    <Field name="code" id="code" className="border border-[#E2E1E5] text-sm 2xl:text-lg p-3 rounded-3xl" placeholder="123456" />
                     <ErrorMessage component='a' className="text-red text-sm text-center pt-2" name='code' />
                 </div>
             </div>
